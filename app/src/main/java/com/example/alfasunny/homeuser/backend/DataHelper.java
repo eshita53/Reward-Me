@@ -38,9 +38,9 @@ public class DataHelper {
         summary.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                totalEarning =  dataSnapshot.child("totalEarning").getValue(Integer.class);
+                totalEarning = dataSnapshot.child("totalEarning").getValue(Integer.class);
                 totalRedeem = dataSnapshot.child("totalRedeem").getValue(Integer.class);
-                totalPoints =  dataSnapshot.child("totalPoints").getValue(Integer.class);
+                totalPoints = dataSnapshot.child("totalPoints").getValue(Integer.class);
             }
 
             @Override
@@ -48,6 +48,8 @@ public class DataHelper {
 
             }
         });
+
+
     }
 
     public void addReward(String customerId, int points) {
@@ -61,7 +63,7 @@ public class DataHelper {
     }
 
     public void redeemReward(String customerId, int points) {
-        addReward(customerId, (0-points));
+        addReward(customerId, (0 - points));
     }
 
     public FirebaseDatabase getDb() {
@@ -101,10 +103,10 @@ public class DataHelper {
     }
 
     public int getTotalRedeem() {
-        return  totalRedeem;
+        return totalRedeem;
     }
 
     public int getTotalPoints() {
-        return  totalPoints;
+        return totalPoints;
     }
 }

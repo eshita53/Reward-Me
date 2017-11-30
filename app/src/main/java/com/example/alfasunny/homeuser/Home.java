@@ -21,7 +21,7 @@ public class Home extends AppCompatActivity {
     boolean isNotification = false;
     boolean isProfile = false;
     boolean isMore = false;
-    boolean ownership = false;
+    static boolean ownership = false;
 
     Button btnManage;
     Button btnAdd;
@@ -81,7 +81,7 @@ public class Home extends AppCompatActivity {
                 String accountType = dataSnapshot.getValue(String.class);
                 if(accountType.equals("owner")==true || ownership==true) {
                     ownership=true;
-                    btnManage.setVisibility(View.INVISIBLE);
+                    btnManage.setVisibility(View.VISIBLE);
                 }
 
             }
