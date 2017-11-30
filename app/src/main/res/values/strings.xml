@@ -4,4 +4,6 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="more">More</string>
+    <string name="earned_points">Earned Points:</string>
+    <string name="redeemed_points">Redeemed Points:</string>
 </resources>

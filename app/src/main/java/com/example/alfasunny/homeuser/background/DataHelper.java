@@ -7,6 +7,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Tanmoy Krishna Das on 30-Nov-17.
  */
@@ -45,6 +48,20 @@ public class DataHelper {
 
             }
         });
+    }
+
+    public void addReward(String customerId, int points) {
+        DatabaseReference customerTransaction = transactions.child(customerId);
+        String key = customerTransaction.push().getKey();
+        Map<String, Object> transactionData = new HashMap<>();
+        transactionData.put("/" + key + "/" + "from", uid);
+        transactionData.put("/" + key + "/" + "amount", points);
+
+        customerTransaction.updateChildren(transactionData);
+    }
+
+    public void redeemReward(String customerId, int points) {
+        addReward(customerId, (0-points));
     }
 
     public FirebaseDatabase getDb() {

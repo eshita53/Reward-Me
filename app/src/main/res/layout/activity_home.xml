@@ -107,7 +107,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/button2"
+                            android:id="@+id/btnAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Add Reward" />
@@ -119,7 +119,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/button3"
+                            android:id="@+id/btnRedeem"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Redeem Reward" />
@@ -131,10 +131,10 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/button4"
+                            android:id="@+id/btnReviews"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Button" />
+                            android:text="Reviews" />
                     </TableRow>
 
                     <TableRow
@@ -143,10 +143,10 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/button5"
+                            android:id="@+id/btnManage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Button" />
+                            android:text="Manage Restaurant" />
                     </TableRow>
                 </TableLayout>
             </android.support.constraint.ConstraintLayout>

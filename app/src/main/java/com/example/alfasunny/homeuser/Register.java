@@ -162,6 +162,16 @@ public class Register extends AppCompatActivity {
             summaryData.put(getFullKey("totalRedeem"), 0);
             summaryData.put(getFullKey("totalPoints"), 0);
             summary.updateChildren(summaryData);
+
+            DatabaseReference sellerbase = users.child(uid);
+            Map<String, Object> sellerData = new HashMap<>();
+            sellerData.put("restaurantName", "Unnamed Restaurant");
+            sellerData.put("restaurantLocation", "Unknown Location");
+            sellerData.put("restaurantPhone", "Number not given");
+            sellerData.put("restaurantRewardRate", 5.00);
+            sellerData.put("restaurantMaximumDiscount", 100.00);
+
+            sellerbase.updateChildren(sellerData);
         }
 
 
