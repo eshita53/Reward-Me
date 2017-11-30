@@ -147,7 +147,8 @@
                             android:id="@+id/btnManage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Manage Restaurant" />
+                            android:text="Manage Restaurant"
+                            android:visibility="invisible" />
                     </TableRow>
                 </TableLayout>
             </android.support.constraint.ConstraintLayout>

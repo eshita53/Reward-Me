@@ -21,6 +21,7 @@ public class Home extends AppCompatActivity {
     boolean isNotification = false;
     boolean isProfile = false;
     boolean isMore = false;
+    boolean ownership = false;
 
     Button btnManage;
     Button btnAdd;
@@ -78,8 +79,9 @@ public class Home extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String accountType = dataSnapshot.getValue(String.class);
-                if(accountType.equals("owner")==false) {
-                    btnManage.setVisibility(View.GONE);
+                if(accountType.equals("owner")==true || ownership==true) {
+                    ownership=true;
+                    btnManage.setVisibility(View.INVISIBLE);
                 }
 
             }
@@ -163,5 +165,13 @@ public class Home extends AppCompatActivity {
                 if(!isMore) startActivity(moreIntent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(ownership==true) {
+            btnManage.setVisibility(View.VISIBLE);
+        }
     }
 }
