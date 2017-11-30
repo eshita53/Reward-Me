@@ -1,6 +1,7 @@
 package com.example.alfasunny.homeuser;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -22,6 +24,7 @@ public class Home extends AppCompatActivity {
     boolean isProfile = false;
     boolean isMore = false;
     static boolean ownership = false;
+    static int tpoints = 0;
 
     Button btnManage;
     Button btnAdd;
@@ -37,6 +40,8 @@ public class Home extends AppCompatActivity {
         btnRedeem = (Button) findViewById(R.id.btnRedeem);
         btnReviews = (Button) findViewById(R.id.btnReviews);
         btnManage = (Button) findViewById(R.id.btnManage);
+
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +79,15 @@ public class Home extends AppCompatActivity {
 
         //Common task for many activities
         d = new DataHelper();
+
+        d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser()==null) {
+                    finish();
+                }
+            }
+        });
 
         d.getUsers().child(d.getUid()).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -120,6 +134,7 @@ public class Home extends AppCompatActivity {
                             public void run() {
                                 earnedTxt.setText(getString(R.string.earned_points) + earned.toString());
                                 redeemTxt.setText(getString(R.string.redeemed_points) + redeemed.toString());
+                                tpoints = totalpoints;
                                 totalPointsTxt.setText(totalpoints.toString());
                             }
                         });
@@ -173,5 +188,7 @@ public class Home extends AppCompatActivity {
         if(ownership==true) {
             btnManage.setVisibility(View.VISIBLE);
         }
+        TextView totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
+        totalPointsTxt.setText(String.valueOf(tpoints));
     }
 }

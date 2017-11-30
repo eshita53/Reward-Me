@@ -49,7 +49,29 @@ public class DataHelper {
             }
         });
 
+        transactions.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Integer sum=0, earned=0, redeemed=0;
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Integer val = snapshot.child("amount").getValue(Integer.class);
+                    sum+=val;
+                    if(val>0) earned+=val;
+                    else redeemed-=val;
+                }
 
+                Map<String, Object> mp = new HashMap<>();
+                mp.put("/totalEarning", earned);
+                mp.put("/totalRedeem", redeemed);
+                mp.put("/totalPoints", sum);
+                summary.child(uid).updateChildren(mp);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void addReward(String customerId, int points) {
@@ -60,6 +82,8 @@ public class DataHelper {
         transactionData.put("/" + key + "/" + "amount", points);
 
         customerTransaction.updateChildren(transactionData);
+
+
     }
 
     public void redeemReward(String customerId, int points) {

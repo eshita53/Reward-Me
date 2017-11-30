@@ -12,12 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Home" />
-        <activity android:name=".RestaurantUser" />
         <activity android:name=".AddReward" />
         <activity android:name=".RedeemReward" />
         <activity android:name=".Notifications" />
         <activity android:name=".Reviews" />
-        <activity android:name=".Reviewss" />
         <activity android:name=".AddReviews" />
         <activity android:name=".Reviews_Details" />
         <activity android:name=".Profile" />

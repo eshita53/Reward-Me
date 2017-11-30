@@ -1,11 +1,13 @@
 package com.example.alfasunny.homeuser;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Notifications extends AppCompatActivity {
     DataHelper d;
@@ -20,7 +22,16 @@ public class Notifications extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
+        d = new DataHelper();
 
+        d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser()==null) {
+                    finish();
+                }
+            }
+        });
 
 
         findViewById(R.id.btnHome).setOnClickListener(new View.OnClickListener() {

@@ -6,219 +6,203 @@
     android:layout_height="match_parent"
     tools:context="com.example.alfasunny.homeuser.ManageRestaurant">
 
-    <TextView
-        android:id="@+id/textView86"
-        android:layout_width="247dp"
-        android:layout_height="57dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="-2dp"
-        android:layout_marginTop="20dp"
-        android:text="Manage  Restaurants"
-        android:textSize="26sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/imageButton43"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton43"
-        android:layout_width="119dp"
-        android:layout_height="69dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textView87"
-        android:layout_width="373dp"
-        android:layout_height="162dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="#8a000000"
-        app:layout_constraintHorizontal_bias="0.2"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton43" />
-
-    <EditText
-        android:id="@+id/editText20"
-        android:layout_width="132dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Phone No:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText19"
-        android:background="#80ffffff"/>
-
-    <EditText
-        android:id="@+id/editText19"
-        android:layout_width="132dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Location:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText18"
-        android:background="#80ffffff"/>
-
-    <EditText
-        android:id="@+id/editText18"
-        android:layout_width="135dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Restaurant:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView87"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="115dp"
-        android:background="#80ffffff"/>
-
-    <TextView
-        android:id="@+id/textView88"
-        android:layout_width="194dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="9dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView90"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/textView87"
-        app:layout_constraintLeft_toRightOf="@+id/editText20"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.136"
-        android:background="#80ffffff"/>
-
-    <TextView
-        android:id="@+id/textView90"
-        android:layout_width="194dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView89"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/textView87"
-        app:layout_constraintLeft_toRightOf="@+id/editText19"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.136"
-        android:background="#80ffffff"/>
-
-    <TextView
-        android:id="@+id/textView89"
-        android:layout_width="194dp"
-        android:layout_height="42dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="@+id/textView87"
-        app:layout_constraintTop_toTopOf="@+id/textView87"
-        app:layout_constraintLeft_toRightOf="@+id/editText18"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.75"
-        android:background="#80ffffff"/>
-
-    <EditText
-        android:id="@+id/editText21"
-        android:layout_width="281dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Maximum Discount Rate:"
-        android:textSize="24sp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText22"
-        android:layout_marginLeft="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView92"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <EditText
-        android:id="@+id/editText22"
-        android:layout_width="156dp"
-        android:layout_height="46dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="9dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Reward Rate:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView87" />
-
-    <TextView
-        android:id="@+id/textView91"
-        android:layout_width="121dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="9dp"
-        android:text="2.5%"
-        android:textSize="33sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/editText22"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView87" />
-
-    <TextView
-        android:id="@+id/textView92"
-        android:layout_width="75dp"
-        android:layout_height="39dp"
-        android:layout_marginRight="16dp"
-        android:text="40%"
-        android:textSize="33sp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView91" />
-
-    <EditText
-        android:id="@+id/editText23"
-        android:layout_width="327dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="6dp"
-        android:background="#8000"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Give Rewards to Customer"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText24" />
-
-    <EditText
-        android:id="@+id/editText24"
-        android:layout_width="327dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="6dp"
-        android:background="#8000"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Give Rewards to Customer"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText21" />
-
-    <include
-        layout="@layout/foot_bar"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/userDataTable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restaurant"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Eshita's Kitchen"
+                    android:textAlignment="textStart" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/restaurantLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Ambarkhana, Sylhet"
+                    android:textAlignment="textStart" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/restaurantPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="01772356815"
+                    android:textAlignment="textStart" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reward Rate (%)"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/restaurantRewardRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="2.5"
+                    android:textAlignment="textStart" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maximum Discount (%)"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/restaurantMaximumDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="100"
+                    android:textAlignment="textStart" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/UpdateProfileRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:text="Update Restaurant Info" />
+            </TableRow>
+
+        </TableLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/footBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+            layout="@layout/foot_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnGiveReward"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Give Reward to customer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <Button
+        android:id="@+id/btnGiveDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Give Discount to Customer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGiveReward" />
 
 </android.support.constraint.ConstraintLayout>

@@ -11,22 +11,22 @@
         android:layout_width="376dp"
         android:layout_height="118dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#dddddd"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#dddddd"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo001" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/inputRedeemVal"
         android:layout_width="176dp"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Point Cast:"
-        android:textSize="28sp"
+        android:text="Reward Point Cost"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView98" />
 
@@ -54,12 +54,13 @@
 
     <TextView
         android:id="@+id/textView93"
-        android:layout_width="176dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="28dp"
         android:text="Available Points:"
         android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
@@ -68,23 +69,23 @@
         android:layout_width="176dp"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Enter Price:"
         android:textSize="28sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
-    <TextView
-        android:id="@+id/textView99"
+    <EditText
+        android:id="@+id/inputValue"
         android:layout_width="85dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="40"
         android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toRightOf="@+id/textView34"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/inputRedeemVal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView103" />
 
@@ -107,16 +108,16 @@
         android:id="@+id/textView102"
         android:layout_width="85dp"
         android:layout_height="35dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:text="60"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView101"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintLeft_toRightOf="@+id/textView94"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.068" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView101" />
 
     <TextView
         android:id="@+id/textView101"
@@ -124,46 +125,48 @@
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="146"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/textView93"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView100" />
+        app:layout_constraintTop_toTopOf="@+id/textView93" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView100"
         android:layout_width="85dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
         android:text="205"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/textView35"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+        app:layout_constraintTop_toTopOf="@+id/textView35" />
 
-    <TextView
-        android:id="@+id/textView104"
+    <Button
+        android:id="@+id/btnRedeemReward"
         android:layout_width="357dp"
-        android:layout_height="46dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        android:background="#dddddd"
         android:text="Redeem  Reward"
         android:textAlignment="center"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/include5"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="357dp"
-        android:background="#dddddd"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <include
+        android:id="@+id/include5"
         layout="@layout/foot_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
