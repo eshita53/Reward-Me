@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Reward Me</string>
+    <string name="notification">Notification</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="more">More</string>
 </resources>

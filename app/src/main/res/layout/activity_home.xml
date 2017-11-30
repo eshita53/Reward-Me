@@ -5,154 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0E0E0"
-    tools:context="com.example.alfasunny.homeuser.Home">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        >
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="125dp"
-            android:layout_height="65dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="12dp"
-            android:layout_toEndOf="@+id/textView8"
-            app:srcCompat="@android:drawable/btn_dialog" />
-
-        <TextView
-            android:id="@+id/edText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_marginStart="29dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Reward Me"
-            android:textSize="36sp" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageView"
-            android:background="#CFD8DC"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_above="@+id/edImage"
-            android:layout_alignEnd="@+id/edText"
-            android:layout_alignStart="@+id/edText"
-            android:background="#E3F2FD"
-            android:text="John Doe"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_alignBaseline="@+id/editText2"
-            android:layout_alignBottom="@+id/editText2"
-            android:layout_alignEnd="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:background="#E3F2FD"
-            android:text="Earned Points: 201"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_alignBottom="@+id/editText2"
-            android:layout_alignEnd="@+id/textView6"
-            android:layout_alignStart="@+id/textView6"
-            android:layout_marginBottom="11dp"
-            android:background="#E3F2FD"
-            android:text="Redeemed Points: 45"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/edImage"
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:layout_alignBottom="@+id/textView6"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="12dp"
-            android:background="#DCEDC8"
-            android:text="159"
-            android:textSize="40sp"
-            android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="75dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/editText2"
-            android:layout_marginTop="29dp"
-            android:layout_toStartOf="@+id/edImage"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_alignBaseline="@+id/textView8"
-            android:layout_alignBottom="@+id/textView8"
-            android:layout_alignStart="@+id/edImage"
-            android:text="Total Points"
-            android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignStart="@+id/textView9"
-            android:layout_alignTop="@+id/textView12"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="175dp"
-            android:layout_height="35dp"
-            android:layout_alignStart="@+id/textView11"
-            android:layout_below="@+id/textView11"
-            android:text="Reviews"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="175dp"
-            android:layout_height="35dp"
-            android:layout_below="@+id/textView9"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@+id/textView9"
-            android:text="Add Reward"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="175dp"
-            android:layout_height="35dp"
-            android:layout_alignStart="@+id/textView12"
-            android:layout_below="@+id/textView12"
-            android:text="Redeem Reward"
-            android:textSize="21sp" />
-
-
-    </RelativeLayout>
+    tools:context="com.example.alfasunny.homeuser.Home"
+    tools:layout_editor_absoluteY="81dp">
 
     <include
+        android:id="@+id/include2"
         layout="@layout/foot_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
