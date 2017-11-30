@@ -6,25 +6,52 @@ import android.widget.TextView;
 
 import com.example.alfasunny.homeuser.background.DataHelper;
 
-public class Home extends AppCompatActivity {
+import static java.lang.Thread.sleep;
 
+public class Home extends AppCompatActivity {
+    DataHelper d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        DataHelper d = new DataHelper();
+        d = new DataHelper();
 
         TextView name = (TextView) findViewById(R.id.displayName);
         name.setText(d.getName());
 
-        Integer earned = d.getTotalEarning();
-        TextView earnedTxt = (TextView) findViewById(R.id.totalEarned);
-        earnedTxt.setText("Earned Points: " + earned.toString());
+        new Thread(new Runnable() {
+            Integer earned;
+            Integer redeemed;
+            TextView earnedTxt;
+            TextView redeemTxt;
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        earned = d.getTotalEarning();
+                        earnedTxt = (TextView) findViewById(R.id.totalEarned);
 
-        Integer redeemed = d.getTotalRedeem();
-        TextView redeemTxt = (TextView) findViewById(R.id.totalRedeemed);
-        redeemTxt.setText("Redeemed Points: " + redeemed.toString());
+                        redeemed = d.getTotalRedeem();
+                        redeemTxt = (TextView) findViewById(R.id.totalRedeemed);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                earnedTxt.setText("Earned Points: " + earned.toString());
+                                redeemTxt.setText("Redeemed Points: " + redeemed.toString());
+                            }
+                        });
+
+
+                        sleep(5000);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
 
     }
 }

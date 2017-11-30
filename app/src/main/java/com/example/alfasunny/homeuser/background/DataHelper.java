@@ -47,6 +47,34 @@ public class DataHelper {
         });
     }
 
+    public FirebaseDatabase getDb() {
+        return db;
+    }
+
+    public FirebaseAuth getmAuth() {
+        return mAuth;
+    }
+
+    public DatabaseReference getDbref() {
+        return dbref;
+    }
+
+    public DatabaseReference getUsers() {
+        return users;
+    }
+
+    public DatabaseReference getTransactions() {
+        return transactions;
+    }
+
+    public DatabaseReference getSummary() {
+        return summary;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
     public String getName() {
         return mAuth.getCurrentUser().getDisplayName();
     }
