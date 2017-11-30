@@ -37,7 +37,8 @@ public class Register extends AppCompatActivity {
     public static final int LOGIN_REQUEST = 3;
     ProgressDialog registeringdialog;
     FirebaseDatabase db;
-    DatabaseReference dbRef;
+    DatabaseReference users;
+    DatabaseReference summary;
     String nameVal;
     String emailVal;
     String phoneVal;
@@ -63,7 +64,8 @@ public class Register extends AppCompatActivity {
 
 
         db = FirebaseDatabase.getInstance();
-        dbRef = db.getReference().child("users");
+        users = db.getReference().child("users");
+        summary = db.getReference().child("summary");
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,19 +144,24 @@ public class Register extends AppCompatActivity {
 
     public void setupUserData() {
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user!=null) {
-            uid = user.getUid();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser!=null) {
+            uid = currentUser.getUid();
             UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(nameVal).build();
-            user.updateProfile(request);
+            currentUser.updateProfile(request);
 
-            Map<String, Object> data = new HashMap<>();
-            data.put(getFullKey("name"), nameVal);
-            data.put(getFullKey("email"), emailVal);
-            data.put(getFullKey("phone"), phoneVal);
-            data.put(getFullKey("accountType"), accountTypeVal);
+            Map<String, Object> profileData = new HashMap<>();
+            profileData.put(getFullKey("name"), nameVal);
+            profileData.put(getFullKey("email"), emailVal);
+            profileData.put(getFullKey("phone"), phoneVal);
+            profileData.put(getFullKey("accountType"), accountTypeVal);
+            users.updateChildren(profileData);
 
-            dbRef.updateChildren(data);
+            Map<String, Object> summaryData = new HashMap<>();
+            summaryData.put(getFullKey("totalEarning"), 0);
+            summaryData.put(getFullKey("totalRedeem"), 0);
+            summaryData.put(getFullKey("totalPoints"), 0);
+            summary.updateChildren(summaryData);
         }
 
 

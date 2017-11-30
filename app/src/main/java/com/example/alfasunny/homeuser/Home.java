@@ -18,5 +18,13 @@ public class Home extends AppCompatActivity {
         TextView name = (TextView) findViewById(R.id.displayName);
         name.setText(d.getName());
 
+        Integer earned = d.getTotalEarning();
+        TextView earnedTxt = (TextView) findViewById(R.id.totalEarned);
+        earnedTxt.setText("Earned Points: " + earned.toString());
+
+        Integer redeemed = d.getTotalRedeem();
+        TextView redeemTxt = (TextView) findViewById(R.id.totalRedeemed);
+        redeemTxt.setText("Redeemed Points: " + redeemed.toString());
+
     }
 }
