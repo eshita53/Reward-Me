@@ -34,8 +34,8 @@
         android:id="@+id/uidTable"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
         android:stretchColumns="*"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,9 +50,9 @@
                 android:id="@+id/labelUserCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="User Code"
+                android:text="Show ID/QR code below to add reward"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
         </TableRow>
 
         <TableRow
@@ -69,7 +69,9 @@
                 android:ems="10"
                 android:text="uid"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
     </TableLayout>
