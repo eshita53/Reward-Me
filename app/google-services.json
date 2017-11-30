@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "613327507289",
+    "firebase_url": "https://reward-me-rme.firebaseio.com",
+    "project_id": "reward-me-rme",
+    "storage_bucket": "reward-me-rme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613327507289:android:0aaa456cc172584f",
+        "android_client_info": {
+          "package_name": "com.example.alfasunny.homeuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613327507289-5tvfut34te4n0u3sams4ljtoppilg163.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfasunny.homeuser",
+            "certificate_hash": "d0802f6c6420911f484d2ea5f886e6ee61b23584"
+          }
+        },
+        {
+          "client_id": "613327507289-pgt3hdu4ap7sdo22i37frjig8os4sopp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQXW9lKLyfGrc_fTrZy42F8gLk0JMG9VU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613327507289-pgt3hdu4ap7sdo22i37frjig8os4sopp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

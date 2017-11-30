@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.alfasunny.homeuser">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Home" />
+        <activity android:name=".RestaurantUser" />
+        <activity android:name=".AddReward" />
+        <activity android:name=".RedeemReward" />
+        <activity android:name=".Notifications" />
+        <activity android:name=".Reviews" />
+        <activity android:name=".Reviewss" />
+        <activity android:name=".AddReviews" />
+        <activity android:name=".Reviews_Details" />
+        <activity android:name=".Profile" />
+        <activity android:name=".More" />
+        <activity android:name=".ReferToFriends" />
+        <activity android:name=".AboutUs" />
+        <activity android:name=".ManageRestaurant" />
+        <activity android:name=".DetectUser" />
+        <activity android:name=".GiveRewardToUser" />
+        <activity android:name=".RedeemRewardFromUser" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Register" />
+        <activity android:name=".Login"></activity>
+    </application>
+
+</manifest>
