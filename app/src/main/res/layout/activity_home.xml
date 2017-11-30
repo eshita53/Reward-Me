@@ -9,7 +9,19 @@
     tools:layout_editor_absoluteY="81dp">
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/userData"
+        layout="@layout/user_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/footbar"
         layout="@layout/foot_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
