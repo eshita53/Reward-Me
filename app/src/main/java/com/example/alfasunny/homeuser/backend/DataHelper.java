@@ -1,4 +1,4 @@
-package com.example.alfasunny.homeuser.background;
+package com.example.alfasunny.homeuser.backend;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

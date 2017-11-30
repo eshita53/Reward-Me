@@ -4,116 +4,382 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.alfasunny.homeuser.Notifications">
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="126dp"
-        android:layout_height="113dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_conversion_absoluteHeight="113dp"
-        tools:layout_conversion_absoluteWidth="126dp"
-        tools:layout_conversion_absoluteX="8dp"
-        tools:layout_conversion_absoluteY="8dp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Notifications"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toRightOf="@+id/imageView4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="35dp"
-        tools:layout_conversion_absoluteWidth="171dp"
-        tools:layout_conversion_absoluteX="154dp"
-        tools:layout_conversion_absoluteY="37dp" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Restaurant:  Demon's Cave"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="49dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="126dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="126dp" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" 31  points were added to your account for buying a product that cost 131 TK."
-        android:textSize="20sp"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="176dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="176dp" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Restaurant:  Demon's Cave"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="49dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="234dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="234dp" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" 31  points were added to your account for buying a product that cost 131 TK."
-        android:textSize="20sp"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="294dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="294dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="388dp"
-        android:layout_height="46dp"
-        app:srcCompat="@android:drawable/button_onoff_indicator_on"
-        tools:layout_conversion_absoluteHeight="50dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="356dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="356dp" />
+    tools:context="com.example.alfasunny.homeuser.Notifications"
+    tools:layout_editor_absoluteY="25dp">
 
     <include
+        android:id="@+id/include2"
         layout="@layout/foot_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/notificationLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/include2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/moyna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Moyna Tea Longue"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/golapi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Golapi Restaurant"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/Jakaria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Jakaria Restaurant"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/labelRestaurant" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/DemonsCave"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Demon's Cave"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/Eshita"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Eshita's Kitchen"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/TKD"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="TKD's Heaven"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/calorie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Calorie Hype"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/Hangout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/labelRestaurant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Restaurant:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Hangout"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/holo_red_dark"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+                    app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+
+                <TextView
+                    android:id="@+id/notificationDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
