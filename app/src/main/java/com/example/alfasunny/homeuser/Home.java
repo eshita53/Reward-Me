@@ -23,8 +23,10 @@ public class Home extends AppCompatActivity {
         new Thread(new Runnable() {
             Integer earned;
             Integer redeemed;
+            Integer totalpoints;
             TextView earnedTxt;
             TextView redeemTxt;
+            TextView totalPointsTxt;
             @Override
             public void run() {
                 while (true) {
@@ -35,16 +37,20 @@ public class Home extends AppCompatActivity {
                         redeemed = d.getTotalRedeem();
                         redeemTxt = (TextView) findViewById(R.id.totalRedeemed);
 
+                        totalpoints = d.getTotalPoints();
+                        totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 earnedTxt.setText("Earned Points: " + earned.toString());
                                 redeemTxt.setText("Redeemed Points: " + redeemed.toString());
+                                totalPointsTxt.setText(totalpoints.toString());
                             }
                         });
 
 
-                        sleep(5000);
+                        sleep(1000);
 
                     } catch (Exception e) {
                         e.printStackTrace();
