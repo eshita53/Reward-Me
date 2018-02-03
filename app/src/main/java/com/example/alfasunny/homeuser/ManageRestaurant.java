@@ -7,12 +7,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
 import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -20,6 +24,10 @@ public class ManageRestaurant extends AppCompatActivity {
     static int stateCode = 1;
     Button btnGiveReward;
     Button btnGiveDiscount;
+    Button btnUpdateRestaurantInfo;
+
+    EditText restaurantName, restaurantLocation, restaurantPhone, restaurantRewardRatio;
+
     Activity activity;
     DataHelper d;
     @Override
@@ -40,7 +48,22 @@ public class ManageRestaurant extends AppCompatActivity {
 
         btnGiveReward = (Button) findViewById(R.id.btnGiveReward);
         btnGiveDiscount = (Button) findViewById(R.id.btnGiveDiscount);
+        btnUpdateRestaurantInfo = (Button) findViewById(R.id.btnUpdateRestaurantInfo);
         activity = this;
+
+        d.getUsers().child(d.getUid()).child("restaurant").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         btnGiveReward.setOnClickListener(new View.OnClickListener() {
             @Override
