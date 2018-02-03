@@ -1,6 +1,7 @@
 package com.example.alfasunny.homeuser;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,7 +36,10 @@ class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
 
     @Override
     public NotificationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater inflater = notifications.getLayoutInflater();
+        View view = inflater.inflate(R.layout.notification_each_layout, parent, true);
+        NotificationViewHolder holder = new NotificationViewHolder(view);
+        return holder;
     }
 
     @Override
@@ -45,6 +49,6 @@ class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 4;
     }
 }
