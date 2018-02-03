@@ -1,6 +1,7 @@
 package com.example.alfasunny.homeuser;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ public class AboutUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override

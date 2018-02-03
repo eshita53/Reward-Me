@@ -25,7 +25,7 @@ public class ManageRestaurant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_restaurant);
 
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override

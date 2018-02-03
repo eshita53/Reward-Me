@@ -24,7 +24,7 @@ public class GiveRewardToUser extends AppCompatActivity {
         rewardPoint = (EditText) findViewById(R.id.inputReward);
         inputRewardRatio=(EditText) findViewById(R.id.inputRewardRatio);
 
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override

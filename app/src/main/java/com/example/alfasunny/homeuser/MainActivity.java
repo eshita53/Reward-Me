@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.concurrent.ThreadPoolExecutor;
+
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-            boolean restaurantOwner;
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser mUser = firebaseAuth.getCurrentUser();
@@ -30,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 if(mUser!=null) {
                     Intent homeIntent = new Intent(MainActivity.this, Home.class);
                     startActivityForResult(homeIntent, HOME_REQUEST);
+                    finish();
                 }
                 else {
-//                    Toast.makeText(MainActivity.this, "Not logged in", Toast.LENGTH_LONG).show();
                     Intent registerIntent = new Intent(MainActivity.this, Register.class);
                     startActivityForResult(registerIntent, REGISTER_REQUEST);
+                    finish();
                 }
             }
         };
@@ -42,25 +44,20 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        mAuth.addAuthStateListener(mAuthListener);
+        Thread waitThread = new Thread(()->{
+            try {
+                Thread.sleep(2000);
+                mAuth.addAuthStateListener(mAuthListener);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        waitThread.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         mAuth.removeAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==HOME_REQUEST) {
-            finish();
-        }
-        if(requestCode==REGISTER_REQUEST) {
-            if(resultCode!=RESULT_OK) {
-                finish();
-            }
-        }
     }
 }

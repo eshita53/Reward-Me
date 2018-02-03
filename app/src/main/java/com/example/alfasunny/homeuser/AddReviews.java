@@ -16,7 +16,7 @@ public class AddReviews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reviews);
 
-        d = new DataHelper();
+        d = DataHelper.getInstance();
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

@@ -15,6 +15,8 @@ import java.util.Map;
  */
 
 public class DataHelper {
+    private static DataHelper instance = new DataHelper();
+
     FirebaseDatabase db;
     FirebaseAuth mAuth;
     DatabaseReference dbref;
@@ -26,7 +28,11 @@ public class DataHelper {
     Integer totalPoints = 0;
     String uid;
 
-    public DataHelper() {
+    public static DataHelper getInstance() {
+        return instance;
+    }
+
+    private DataHelper() {
         db = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         dbref = db.getReference();

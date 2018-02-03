@@ -36,7 +36,7 @@ public class RedeemRewardFromUser extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         uid = mAuth.getCurrentUser().getUid();
         summary= FirebaseDatabase.getInstance().getReference("summary");
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override

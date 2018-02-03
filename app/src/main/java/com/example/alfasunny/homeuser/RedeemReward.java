@@ -31,7 +31,7 @@ public class RedeemReward extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redeem_reward);
 
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override

@@ -78,7 +78,7 @@ public class Home extends AppCompatActivity {
 
 
         //Common task for many activities
-        d = new DataHelper();
+        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
