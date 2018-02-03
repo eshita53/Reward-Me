@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile extends AppCompatActivity {

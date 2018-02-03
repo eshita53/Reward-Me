@@ -1,13 +1,13 @@
 package com.example.alfasunny.homeuser;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AboutUs extends AppCompatActivity {

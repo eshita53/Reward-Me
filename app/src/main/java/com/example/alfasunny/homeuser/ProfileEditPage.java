@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileEditPage extends AppCompatActivity {

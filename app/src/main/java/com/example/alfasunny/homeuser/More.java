@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.MainActivity;
+import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class More extends AppCompatActivity {

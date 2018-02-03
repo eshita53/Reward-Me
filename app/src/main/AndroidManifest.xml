@@ -14,7 +14,7 @@
         <activity android:name=".Home" />
         <activity android:name=".AddReward" />
         <activity android:name=".RedeemReward" />
-        <activity android:name=".Notifications" />
+        <activity android:name=".completed.Notifications" />
         <activity android:name=".Reviews" />
         <activity android:name=".AddReviews" />
         <activity android:name=".Reviews_Details" />
@@ -34,9 +34,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".completed.Register" />
-        <activity android:name=".Login" />
+        <activity android:name=".completed.Login" />
         <activity android:name=".ProfileEditPage" />
-        <activity android:name=".AddRestaurant"></activity>
+        <activity android:name=".completed.AddRestaurant"></activity>
     </application>
 
 </manifest>
