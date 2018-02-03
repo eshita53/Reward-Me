@@ -5,12 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile extends AppCompatActivity {
     DataHelper d;
+    Button editButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,12 @@ public class Profile extends AppCompatActivity {
                 Intent moreIntent = new Intent(getBaseContext(), More.class);
                 startActivity(moreIntent);
             }
+        });
+        findViewById(R.id.edit_button).setOnClickListener((v)->{
+            Intent profileToEditProfile= new Intent(Profile.this,ProfileEditPage.class);
+            startActivity(profileToEditProfile);
+
+
         });
     }
 }

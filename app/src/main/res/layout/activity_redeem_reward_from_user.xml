@@ -117,15 +117,15 @@
         app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintLeft_toRightOf="@+id/textView94"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView101" />
+        app:layout_constraintTop_toBottomOf="@+id/availablePoints" />
 
     <TextView
-        android:id="@+id/textView101"
+        android:id="@+id/availablePoints"
         android:layout_width="85dp"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="146"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/textView93"

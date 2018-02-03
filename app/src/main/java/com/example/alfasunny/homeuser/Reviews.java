@@ -18,6 +18,7 @@ public class Reviews extends AppCompatActivity {
 
         d = new DataHelper();
 
+
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

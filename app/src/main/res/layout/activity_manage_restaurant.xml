@@ -145,7 +145,7 @@
                     android:layout_marginLeft="3dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="100"
+                    android:text="00"
                     android:textAlignment="textStart" />
             </TableRow>
 

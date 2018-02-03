@@ -5,49 +5,38 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class Notifications extends AppCompatActivity {
+public class ProfileEditPage extends AppCompatActivity {
+  private ImageButton  profileImage;
     DataHelper d;
-    DatabaseReference summary;
-    boolean isHome = false;
-    boolean isNotification = true;
-    boolean isProfile = false;
-    boolean isMore = false;
-
-    FirebaseAuth mAuth;
-    String uid;
-
+    Button doneButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notifications);
-        mAuth = FirebaseAuth.getInstance();
-        uid = mAuth.getCurrentUser().getUid();
-        summary = FirebaseDatabase.getInstance().getReference("summary");
+        setContentView(R.layout.activity_profile_edit_page);
+
         d = new DataHelper();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
+                if(firebaseAuth.getCurrentUser()==null) {
                     finish();
                 }
             }
         });
 
-
         findViewById(R.id.btnHome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent homeIntent = new Intent(getBaseContext(), Home.class);
-                if (!isHome) startActivity(homeIntent);
+                startActivity(homeIntent);
             }
         });
 
@@ -55,7 +44,7 @@ public class Notifications extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent notificationIntent = new Intent(getBaseContext(), Notifications.class);
-                if (!isNotification) startActivity(notificationIntent);
+                startActivity(notificationIntent);
             }
         });
 
@@ -63,7 +52,7 @@ public class Notifications extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent profileIntent = new Intent(getBaseContext(), Profile.class);
-                if (!isProfile) startActivity(profileIntent);
+                startActivity(profileIntent);
             }
         });
 
@@ -71,9 +60,16 @@ public class Notifications extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent moreIntent = new Intent(getBaseContext(), More.class);
-                if (!isMore) startActivity(moreIntent);
+                startActivity(moreIntent);
             }
         });
+        findViewById(R.id.done_button).setOnClickListener((View v) ->{
+
+            Intent editProfieToProfile=new Intent(ProfileEditPage.this,Profile.class);
+            startActivity(editProfieToProfile);
+        });
+
+        profileImage=(ImageButton) findViewById(R.id.profileImage);
 
     }
 }

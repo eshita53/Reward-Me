@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GiveRewardToUser extends AppCompatActivity {
     Button btnAddReward;
-    EditText rewardPoint;
+    EditText rewardPoint,inputRewardRatio;
     DataHelper d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class GiveRewardToUser extends AppCompatActivity {
 
         btnAddReward = (Button) findViewById(R.id.btnAddReward);
         rewardPoint = (EditText) findViewById(R.id.inputReward);
+        inputRewardRatio=(EditText) findViewById(R.id.inputRewardRatio);
+
         d = new DataHelper();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
@@ -38,6 +40,7 @@ public class GiveRewardToUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 d.addReward(getIntent().getStringExtra("uid"), Integer.parseInt(rewardPoint.getText().toString()));
+
                 finish();
             }
         });

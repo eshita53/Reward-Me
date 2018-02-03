@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "613327507289-8g8qm6hkgk3s8mjdklnsrm5aegriejvu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfasunny.homeuser",
+            "certificate_hash": "83001d5d219cdc574c655ba4f56cc7aad73b0e83"
+          }
+        },
+        {
           "client_id": "613327507289-5tvfut34te4n0u3sams4ljtoppilg163.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

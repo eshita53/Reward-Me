@@ -55,6 +55,7 @@ public class DataHelper {
                 Integer sum=0, earned=0, redeemed=0;
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Integer val = snapshot.child("amount").getValue(Integer.class);
+
                     sum+=val;
                     if(val>0) earned+=val;
                     else redeemed-=val;

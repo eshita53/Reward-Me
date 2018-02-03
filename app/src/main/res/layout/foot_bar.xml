@@ -13,9 +13,9 @@
 
 
     <TableRow
-        android:paddingVertical="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingVertical="5dp">
 
 
         <LinearLayout
