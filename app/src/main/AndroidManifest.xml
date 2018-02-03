@@ -22,7 +22,7 @@
         <activity android:name=".More" />
         <activity android:name=".ReferToFriends" />
         <activity android:name=".AboutUs" />
-        <activity android:name=".ManageRestaurant" />
+        <activity android:name=".completed.ManageRestaurant" />
         <activity android:name=".DetectUser" />
         <activity android:name=".GiveRewardToUser" />
         <activity android:name=".RedeemRewardFromUser" />

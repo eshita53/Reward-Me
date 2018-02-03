@@ -1,4 +1,4 @@
-package com.example.alfasunny.homeuser;
+package com.example.alfasunny.homeuser.completed;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,9 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.alfasunny.homeuser.GiveRewardToUser;
+import com.example.alfasunny.homeuser.More;
+import com.example.alfasunny.homeuser.Profile;
+import com.example.alfasunny.homeuser.R;
+import com.example.alfasunny.homeuser.RedeemRewardFromUser;
 import com.example.alfasunny.homeuser.backend.DataHelper;
-import com.example.alfasunny.homeuser.completed.Home;
-import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +36,7 @@ public class ManageRestaurant extends AppCompatActivity {
 
     Activity activity;
     DataHelper d;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,7 @@ public class ManageRestaurant extends AppCompatActivity {
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()==null) {
+                if (firebaseAuth.getCurrentUser() == null) {
                     finish();
                 }
             }
@@ -77,7 +81,7 @@ public class ManageRestaurant extends AppCompatActivity {
         });
 
         Map<String, Object> data = new TreeMap<>();
-        btnUpdateRestaurantInfo.setOnClickListener(e->{
+        btnUpdateRestaurantInfo.setOnClickListener(e -> {
             data.put("tin", tinNumber.getText().toString().trim());
             data.put("Name", restaurantName.getText().toString().trim());
             data.put("Location", restaurantLocation.getText().toString().trim());
@@ -88,11 +92,10 @@ public class ManageRestaurant extends AppCompatActivity {
         });
 
 
-
         btnGiveReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stateCode=1;
+                stateCode = 1;
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integrator.setPrompt("Detect User from QR Code");
@@ -106,7 +109,7 @@ public class ManageRestaurant extends AppCompatActivity {
         btnGiveDiscount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stateCode=2;
+                stateCode = 2;
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integrator.setPrompt("Detect User from QR Code");
@@ -152,24 +155,42 @@ public class ManageRestaurant extends AppCompatActivity {
 
     }
 
+    String userUID;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result!=null) {
-            if(result.getContents()==null) {
+        if (result != null) {
+            if (result.getContents() == null) {
                 Toast.makeText(this, "User Detection cancelled", Toast.LENGTH_LONG).show();
             } else {
-                String userUID = result.getContents();
-                if(stateCode==1) {
-                    Intent giveRewardIntent = new Intent(ManageRestaurant.this, GiveRewardToUser.class);
-                    giveRewardIntent.putExtra("uid", userUID);
-                    startActivity(giveRewardIntent);
-                }
-                else {
-                    Intent giveDiscountIntent = new Intent(ManageRestaurant.this, RedeemRewardFromUser.class);
-                    giveDiscountIntent.putExtra("uid", userUID);
-                    startActivity(giveDiscountIntent);
-                }
+                userUID = result.getContents();
+
+                d.getUsers().addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (userUID.contains(".") || userUID.contains("#") || userUID.contains("$") || userUID.contains("[") || userUID.contains("]") || !dataSnapshot.child(userUID).exists()) {
+                            Toast.makeText(ManageRestaurant.this, "Invalid User", Toast.LENGTH_LONG).show();
+                        } else {
+                            if (stateCode == 1) {
+                                Intent giveRewardIntent = new Intent(ManageRestaurant.this, GiveRewardToUser.class);
+                                giveRewardIntent.putExtra("uid", userUID);
+                                startActivity(giveRewardIntent);
+                            } else {
+                                Intent giveDiscountIntent = new Intent(ManageRestaurant.this, RedeemRewardFromUser.class);
+                                giveDiscountIntent.putExtra("uid", userUID);
+                                startActivity(giveDiscountIntent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
 //                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
             }
         }

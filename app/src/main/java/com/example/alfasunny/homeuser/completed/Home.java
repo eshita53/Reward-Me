@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.alfasunny.homeuser.ManageRestaurant;
 import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
