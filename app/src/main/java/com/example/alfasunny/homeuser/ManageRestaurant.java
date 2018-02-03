@@ -20,13 +20,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class ManageRestaurant extends AppCompatActivity {
     static int stateCode = 1;
     Button btnGiveReward;
     Button btnGiveDiscount;
     Button btnUpdateRestaurantInfo;
 
-    EditText restaurantName, restaurantLocation, restaurantPhone, restaurantRewardRatio;
+    EditText tinNumber, restaurantName, restaurantLocation, restaurantPhone, restaurantRewardRatio;
 
     Activity activity;
     DataHelper d;
@@ -46,6 +49,12 @@ public class ManageRestaurant extends AppCompatActivity {
             }
         });
 
+        tinNumber = (EditText) findViewById(R.id.tinNumber);
+        restaurantName = (EditText) findViewById(R.id.restaurantName);
+        restaurantLocation = (EditText) findViewById(R.id.restaurantLocation);
+        restaurantPhone = (EditText) findViewById(R.id.restaurantPhone);
+        restaurantRewardRatio = (EditText) findViewById(R.id.restaurantRewardRate);
+
         btnGiveReward = (Button) findViewById(R.id.btnGiveReward);
         btnGiveDiscount = (Button) findViewById(R.id.btnGiveDiscount);
         btnUpdateRestaurantInfo = (Button) findViewById(R.id.btnUpdateRestaurantInfo);
@@ -54,13 +63,28 @@ public class ManageRestaurant extends AppCompatActivity {
         d.getUsers().child(d.getUid()).child("restaurant").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                tinNumber.setText(dataSnapshot.child("tin").getValue(String.class));
+                restaurantName.setText(dataSnapshot.child("Name").getValue(String.class));
+                restaurantLocation.setText(dataSnapshot.child("Location").getValue(String.class));
+                restaurantPhone.setText(dataSnapshot.child("Phone").getValue(String.class));
+                restaurantRewardRatio.setText(String.valueOf(dataSnapshot.child("RewardRate").getValue(Double.class)));
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+        });
+
+        Map<String, Object> data = new TreeMap<>();
+        btnUpdateRestaurantInfo.setOnClickListener(e->{
+            data.put("tin", tinNumber.getText().toString().trim());
+            data.put("Name", restaurantName.getText().toString().trim());
+            data.put("Location", restaurantLocation.getText().toString().trim());
+            data.put("Phone", restaurantPhone.getText().toString().trim());
+            data.put("RewardRate", Double.parseDouble(restaurantRewardRatio.getText().toString().trim()));
+
+            d.getUsers().child(d.getUid()).child("restaurant").updateChildren(data);
         });
 
 

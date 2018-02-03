@@ -33,6 +33,27 @@
 
             <TableRow
                 android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tinNumberLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TIN Number:"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/tinNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -51,7 +72,6 @@
                     android:layout_marginLeft="3dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Eshita's Kitchen"
                     android:textAlignment="textStart" />
 
             </TableRow>
@@ -76,7 +96,6 @@
                     android:layout_marginLeft="3dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Ambarkhana, Sylhet"
                     android:textAlignment="textStart" />
             </TableRow>
 
@@ -99,7 +118,6 @@
                     android:layout_marginLeft="3dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="01772356815"
                     android:textAlignment="textStart" />
             </TableRow>
 
@@ -121,8 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="2.5"
+                    android:inputType="numberDecimal"
                     android:textAlignment="textStart" />
             </TableRow>
 
