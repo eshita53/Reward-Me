@@ -69,7 +69,9 @@ public class ProfileEditPage extends AppCompatActivity {
             startActivity(editProfieToProfile);
         });
 
+
         profileImage=(ImageButton) findViewById(R.id.profileImage);
+
 
     }
 }
