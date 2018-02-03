@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.alfasunny.homeuser.Home;
 import com.example.alfasunny.homeuser.R;
-import com.example.alfasunny.homeuser.Register;
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

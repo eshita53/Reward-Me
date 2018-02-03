@@ -93,7 +93,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String accountType = dataSnapshot.getValue(String.class);
-                if(accountType.equals("owner")==true || ownership==true) {
+                if(accountType.equals("owner") || ownership==true) {
                     ownership=true;
                     btnManage.setVisibility(View.VISIBLE);
                 }
@@ -140,7 +140,7 @@ public class Home extends AppCompatActivity {
                         });
 
 
-                        sleep(1000);
+                        sleep(100);
 
                     } catch (Exception e) {
                         e.printStackTrace();

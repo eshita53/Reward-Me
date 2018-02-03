@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/almostwhite"
-    tools:context="com.example.alfasunny.homeuser.Register">
+    tools:context="com.example.alfasunny.homeuser.completed.Register">
 
     <ImageView
         android:id="@+id/imageView28"

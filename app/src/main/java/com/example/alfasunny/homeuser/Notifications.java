@@ -4,14 +4,38 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+class NotificationEach {
+    String from;
+    Integer amount;
+    Double cost;
+    String to;
+    String fromRestaurantName;
+    String toPersonName;
+
+    public NotificationEach() {}
+
+    public NotificationEach(String from, Integer amount, Double cost, String to, String fromRestaurantName, String toPersonName) {
+        this.from = from;
+        this.amount = amount;
+        this.cost = cost;
+        this.to = to;
+        this.fromRestaurantName = fromRestaurantName;
+        this.toPersonName = toPersonName;
+    }
+}
 
 public class Notifications extends AppCompatActivity {
     DataHelper d;
@@ -20,6 +44,9 @@ public class Notifications extends AppCompatActivity {
     boolean isNotification = true;
     boolean isProfile = false;
     boolean isMore = false;
+    ArrayList<NotificationEach> notificationList;
+
+    RecyclerView notifications;
 
     FirebaseAuth mAuth;
     String uid;
@@ -42,6 +69,22 @@ public class Notifications extends AppCompatActivity {
             }
         });
 
+        notifications = findViewById(R.id.notifications);
+        d.getTransactions().child(d.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                notificationList.clear();
+                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                    notificationList.add(child.getValue(NotificationEach.class));
+                }
+                notifications.setAdapter(new NotificationAdapter(notificationList, Notifications.this));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         findViewById(R.id.btnHome).setOnClickListener(new View.OnClickListener() {
             @Override

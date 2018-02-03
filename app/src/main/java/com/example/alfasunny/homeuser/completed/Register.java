@@ -1,4 +1,4 @@
-package com.example.alfasunny.homeuser;
+package com.example.alfasunny.homeuser.completed;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.alfasunny.homeuser.AddRestaurant;
+import com.example.alfasunny.homeuser.Home;
+import com.example.alfasunny.homeuser.Login;
+import com.example.alfasunny.homeuser.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
