@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
     Button btnRegister;
     FirebaseAuth mAuth;
     public static final int LOGIN_REQUEST = 3;
+    public static final int ADD_RESTAURANT_DETAILS_REQUEST = 4;
     ProgressDialog registeringdialog;
     FirebaseDatabase db;
     DatabaseReference users;
@@ -45,6 +46,7 @@ public class Register extends AppCompatActivity {
     String passwordVal;
     String accountTypeVal;
     String uid;
+    Button btnAddRestaurantDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,35 @@ public class Register extends AppCompatActivity {
         accountType = (RadioGroup) findViewById(R.id.inputAccountTypes);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnAddRestaurantDetails = (Button) findViewById(R.id.btnAddRestaurantDetails);
 
 
         db = FirebaseDatabase.getInstance();
         users = db.getReference().child("users");
         summary = db.getReference().child("summary");
+
+        accountType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.customer) {
+                    btnAddRestaurantDetails.setVisibility(View.GONE);
+                    btnRegister.setEnabled(false);
+
+                }
+                if(checkedId==R.id.owner) {
+                    btnAddRestaurantDetails.setVisibility(View.VISIBLE);
+                    btnRegister.setEnabled(true);
+                }
+            }
+        });
+
+        btnAddRestaurantDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addRestaurantIntent = new Intent(Register.this, AddRestaurant.class);
+                startActivityForResult(addRestaurantIntent, ADD_RESTAURANT_DETAILS_REQUEST);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

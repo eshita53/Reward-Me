@@ -35,7 +35,8 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".Login" />
-        <activity android:name=".ProfileEditPage"></activity>
+        <activity android:name=".ProfileEditPage" />
+        <activity android:name=".AddRestaurant"></activity>
     </application>
 
 </manifest>
