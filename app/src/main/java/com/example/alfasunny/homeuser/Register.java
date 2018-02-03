@@ -47,6 +47,9 @@ public class Register extends AppCompatActivity {
     String accountTypeVal;
     String uid;
     Button btnAddRestaurantDetails;
+    String tintxt, restaurantNametxt, restaurantLocationtxt, phonetxt;
+    Double ratiotxt;
+    public static final int HOME_REQUEST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class Register extends AppCompatActivity {
         btnAddRestaurantDetails = (Button) findViewById(R.id.btnAddRestaurantDetails);
 
 
+
         db = FirebaseDatabase.getInstance();
         users = db.getReference().child("users");
         summary = db.getReference().child("summary");
@@ -75,12 +79,12 @@ public class Register extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.customer) {
                     btnAddRestaurantDetails.setVisibility(View.GONE);
-                    btnRegister.setEnabled(false);
+                    btnRegister.setEnabled(true);
 
                 }
                 if(checkedId==R.id.owner) {
                     btnAddRestaurantDetails.setVisibility(View.VISIBLE);
-                    btnRegister.setEnabled(true);
+                    btnRegister.setEnabled(false);
                 }
             }
         });
@@ -137,6 +141,8 @@ public class Register extends AppCompatActivity {
                                     setResult(RESULT_OK, returnIntent);
                                     registeringdialog.cancel();
                                     setupUserData();
+                                    Intent homeIntent = new Intent(Register.this, Home.class);
+                                    startActivityForResult(homeIntent, HOME_REQUEST);
                                     finish();
                                 }
                                 else {
@@ -159,7 +165,18 @@ public class Register extends AppCompatActivity {
             }
             else {
                 Toast.makeText(Register.this, "Login Failed", Toast.LENGTH_LONG).show();
-
+            }
+        }
+        if(requestCode==ADD_RESTAURANT_DETAILS_REQUEST) {
+            if(data==null) {
+                Toast.makeText(getBaseContext(), "Restaurant Info not added!!!", Toast.LENGTH_LONG).show();
+            } else if(resultCode==RESULT_OK) {
+                tintxt = data.getStringExtra("tin");
+                restaurantNametxt = data.getStringExtra("name");
+                restaurantLocationtxt = data.getStringExtra("location");
+                phonetxt = data.getStringExtra("phone");
+                ratiotxt = Double.parseDouble(data.getStringExtra("ratio"));
+                btnRegister.setEnabled(true);
             }
         }
     }
@@ -191,11 +208,12 @@ public class Register extends AppCompatActivity {
 
             DatabaseReference sellerbase = users.child(uid);
             Map<String, Object> sellerData = new HashMap<>();
-            sellerData.put("restaurantName", "Unnamed Restaurant");
-            sellerData.put("restaurantLocation", "Unknown Location");
-            sellerData.put("restaurantPhone", "Number not given");
-            sellerData.put("restaurantRewardRate", 5.00);
-            sellerData.put("restaurantMaximumDiscount", 100.00);
+            sellerData.put("restaurant/tin", tintxt);
+            sellerData.put("restaurant/Name", restaurantNametxt);
+            sellerData.put("restaurant/Location", restaurantLocationtxt);
+            sellerData.put("restaurant/Phone", phonetxt);
+            sellerData.put("restaurant/RewardRate", ratiotxt);
+
 
             sellerbase.updateChildren(sellerData);
         }

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
+import com.example.alfasunny.homeuser.completed.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class More extends AppCompatActivity {
@@ -47,6 +48,7 @@ public class More extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 d.getmAuth().signOut();
+                startActivity(new Intent(More.this, MainActivity.class));
                 finish();
             }
         });
