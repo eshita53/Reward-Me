@@ -39,6 +39,7 @@ public class DataHelper {
         users = dbref.child("users");
         transactions = dbref.child("transactions");
         summary = dbref.child("summary");
+
         uid = mAuth.getCurrentUser().getUid();
 
         summary.child(uid).addValueEventListener(new ValueEventListener() {

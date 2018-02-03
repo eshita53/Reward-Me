@@ -1,26 +1,30 @@
-package com.example.alfasunny.homeuser;
+package com.example.alfasunny.homeuser.completed;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.alfasunny.homeuser.Home;
+import com.example.alfasunny.homeuser.R;
+import com.example.alfasunny.homeuser.Register;
+import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     public static final int REGISTER_REQUEST = 1;
     public static final int HOME_REQUEST = 2;
+    DataHelper dataHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
     }
 
     protected void onResume() {

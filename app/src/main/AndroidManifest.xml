@@ -26,7 +26,7 @@
         <activity android:name=".DetectUser" />
         <activity android:name=".GiveRewardToUser" />
         <activity android:name=".RedeemRewardFromUser" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".completed.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
