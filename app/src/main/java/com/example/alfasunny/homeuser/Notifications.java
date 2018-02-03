@@ -49,22 +49,25 @@ public class Notifications extends AppCompatActivity {
             }
         });
 
-//        notifications = findViewById(R.id.notifications);
-//        d.getTransactions().child(d.getUid()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                notificationList = new ArrayList<>();
-//                for(DataSnapshot child: dataSnapshot.getChildren()) {
-//                    notificationList.add(child.getValue(NotificationEach.class));
-//                }
-//                notifications.setAdapter(new NotificationAdapter(notificationList, Notifications.this));
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+        notifications = findViewById(R.id.notifications);
+        notificationList = new ArrayList<>();
+        d.getTransactions().child(d.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                notificationList = new ArrayList<>();
+                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                    notificationList.add(child.getValue(NotificationEach.class));
+                }
+                notifications.setAdapter(new NotificationAdapter(notificationList, Notifications.this));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //.setAdapter(new NotificationAdapter(notificationList, Notifications.this));
+
 
         findViewById(R.id.btnHome).setOnClickListener(new View.OnClickListener() {
             @Override

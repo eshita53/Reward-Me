@@ -37,18 +37,37 @@ class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
     @Override
     public NotificationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = notifications.getLayoutInflater();
-        View view = inflater.inflate(R.layout.notification_each_layout, parent, true);
+        View view = inflater.inflate(R.layout.notification_each_layout, null);
+
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
+
         NotificationViewHolder holder = new NotificationViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
+        NotificationEach currentNotification = notificationList.get(position);
+
+        holder.restaurantName.setText(currentNotification.getFromRestaurantName());
+
+        String description = "";
+
+        if(currentNotification.getAmount()<0) {
+            description = String.valueOf(0-currentNotification.getAmount()) + " was redeemed from your account for buying a product that cost " + String.valueOf(currentNotification.getCost())  + " Taka";
+        }
+        else {
+            description = String.valueOf(currentNotification.getAmount()) + " was added to your account for buying a product that cost " + String.valueOf(currentNotification.getCost())  + " Taka";
+        }
+
+
+        holder.notificationDescription.setText(description);
 
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return notificationList.size();
     }
 }

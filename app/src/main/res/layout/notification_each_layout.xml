@@ -2,53 +2,44 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:layout_editor_absoluteY="25dp">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/moyna"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/labelRestaurant"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:paddingBottom="10dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Restaurant:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/labelRestaurant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Restaurant:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/restaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Moyna Tea Longue"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
+        app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
 
-        <TextView
-            android:id="@+id/restaurantName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Moyna Tea Longue"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/holo_red_dark"
-            app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
-            app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
-
-        <TextView
-            android:id="@+id/notificationDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
-    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/notificationDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="31 Points were adde to your account for buying a product that cost 131 Taka"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
 </android.support.constraint.ConstraintLayout>
