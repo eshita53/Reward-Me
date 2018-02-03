@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0E0E0"
-    tools:context="com.example.alfasunny.homeuser.Home"
+    tools:context="com.example.alfasunny.homeuser.completed.Home"
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.constraint.ConstraintLayout

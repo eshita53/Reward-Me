@@ -1,84 +1,39 @@
-package com.example.alfasunny.homeuser;
+package com.example.alfasunny.homeuser.completed;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.alfasunny.homeuser.More;
+import com.example.alfasunny.homeuser.Profile;
+import com.example.alfasunny.homeuser.R;
 import com.example.alfasunny.homeuser.backend.DataHelper;
-import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import static java.lang.Thread.sleep;
 
-public class Home extends AppCompatActivity {
+public class RedeemReward extends AppCompatActivity {
     DataHelper d;
-
-    boolean isHome = true;
-    boolean isNotification = false;
-    boolean isProfile = false;
-    boolean isMore = false;
-    static boolean ownership = false;
-    static int tpoints = 0;
-
-    Button btnManage;
-    Button btnAdd;
-    Button btnReviews;
-    Button btnRedeem;
+    TextView uidText;
+    ImageView qrImage;
+    int counter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_redeem_reward);
 
-        //Tasks specific to this page
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnRedeem = (Button) findViewById(R.id.btnRedeem);
-        btnReviews = (Button) findViewById(R.id.btnReviews);
-        btnManage = (Button) findViewById(R.id.btnManage);
-
-
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent addIntent = new Intent(getBaseContext(), AddReward.class);
-                startActivity(addIntent);
-            }
-        });
-
-        btnRedeem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent redeemIntent = new Intent(getBaseContext(), RedeemReward.class);
-                startActivity(redeemIntent);
-            }
-        });
-
-        btnReviews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent reviewsIntent = new Intent(getBaseContext(), Reviews.class);
-                startActivity(reviewsIntent);
-            }
-        });
-
-        btnManage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent manageIntent = new Intent(getBaseContext(), ManageRestaurant.class);
-                startActivity(manageIntent);
-            }
-        });
-
-
-
-        //Common task for many activities
         d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
@@ -90,15 +45,11 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        d.getUsers().child(d.getUid()).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
+        d.getSummary().child(d.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String accountType = dataSnapshot.getValue(String.class);
-                if(accountType.equals("owner") || ownership==true) {
-                    ownership=true;
-                    btnManage.setVisibility(View.VISIBLE);
-                }
-
+                counter++;
+                if(counter>1) finish();
             }
 
             @Override
@@ -106,6 +57,24 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
+        uidText = (TextView) findViewById(R.id.uidText);
+        uidText.setText(d.getUid());
+
+        qrImage = (ImageView) findViewById(R.id.qrImage);
+
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(d.getUid(), BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            qrImage.setImageBitmap(bitmap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Common task for many activities
+
 
         TextView name = (TextView) findViewById(R.id.displayName);
         name.setText(d.getName());
@@ -127,21 +96,16 @@ public class Home extends AppCompatActivity {
                         redeemed = d.getTotalRedeem();
                         redeemTxt = (TextView) findViewById(R.id.totalRedeemed);
 
-                        totalpoints = d.getTotalPoints();
-                        totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 earnedTxt.setText(getString(R.string.earned_points) + earned.toString());
                                 redeemTxt.setText(getString(R.string.redeemed_points) + redeemed.toString());
-                                tpoints = totalpoints;
-                                totalPointsTxt.setText(totalpoints.toString());
                             }
                         });
 
 
-                        sleep(100);
+                        sleep(1000);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -154,7 +118,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent homeIntent = new Intent(getBaseContext(), Home.class);
-                if(!isHome) startActivity(homeIntent);
+                startActivity(homeIntent);
             }
         });
 
@@ -162,7 +126,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent notificationIntent = new Intent(getBaseContext(), Notifications.class);
-                if(!isNotification) startActivity(notificationIntent);
+                startActivity(notificationIntent);
             }
         });
 
@@ -170,7 +134,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent profileIntent = new Intent(getBaseContext(), Profile.class);
-                if(!isProfile) startActivity(profileIntent);
+                startActivity(profileIntent);
             }
         });
 
@@ -178,18 +142,8 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent moreIntent = new Intent(getBaseContext(), More.class);
-                if(!isMore) startActivity(moreIntent);
+                startActivity(moreIntent);
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(ownership==true) {
-            btnManage.setVisibility(View.VISIBLE);
-        }
-        TextView totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
-        totalPointsTxt.setText(String.valueOf(tpoints));
     }
 }

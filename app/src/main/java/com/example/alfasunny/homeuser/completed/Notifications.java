@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.alfasunny.homeuser.Home;
 import com.example.alfasunny.homeuser.More;
-import com.example.alfasunny.homeuser.completed.NotificationAdapter;
 import com.example.alfasunny.homeuser.NotificationEach;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;

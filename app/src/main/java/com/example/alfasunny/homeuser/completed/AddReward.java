@@ -1,4 +1,4 @@
-package com.example.alfasunny.homeuser;
+package com.example.alfasunny.homeuser.completed;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.alfasunny.homeuser.More;
+import com.example.alfasunny.homeuser.Profile;
+import com.example.alfasunny.homeuser.R;
 import com.example.alfasunny.homeuser.backend.DataHelper;
-import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Home" />
-        <activity android:name=".AddReward" />
-        <activity android:name=".RedeemReward" />
+        <activity android:name=".completed.Home" />
+        <activity android:name=".completed.AddReward" />
+        <activity android:name=".completed.RedeemReward" />
         <activity android:name=".completed.Notifications" />
         <activity android:name=".Reviews" />
         <activity android:name=".AddReviews" />
