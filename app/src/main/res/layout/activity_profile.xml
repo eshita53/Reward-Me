@@ -9,120 +9,92 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="25dp">
 
-    <ImageView
-        android:id="@+id/star_imageView"
-        android:layout_width="180dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/special_user_textView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
-
-    <TextView
-        android:id="@+id/special_user_textView"
-        android:layout_width="149dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Special User"
-        android:textAlignment="textEnd"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
     <TextView
         android:id="@+id/phone_textView"
-        android:layout_width="110dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#fafafa"
-        android:text="Phone"
-        android:textAlignment="center"
-        android:textAllCaps="true"
+        android:text="Phone:"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/phone_id_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_textView" />
 
     <TextView
         android:id="@+id/email_textView"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#fafafa"
-        android:text="Email"
-        android:textAlignment="center"
-        android:textAllCaps="true"
+        android:text="Email:"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/email_id_textview"
+        app:layout_constraintEnd_toEndOf="@+id/phone_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_textView" />
 
     <TextView
         android:id="@+id/name_textView"
-        android:layout_width="110dp"
+        android:layout_width="0dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="#fafafa"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textAllCaps="true"
+        android:text="Name:"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/name_id_textView"
+        app:layout_constraintEnd_toEndOf="@+id/phone_textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/special_user_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
     <TextView
         android:id="@+id/name_id_textView"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        android:text="ALFA  SUNNY"
+        android:textAlignment="viewStart"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/star_imageView" />
+        app:layout_constraintStart_toStartOf="@+id/phone_id_textView"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
 
     <TextView
         android:id="@+id/phone_id_textView"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:text="01754584567"
+        android:textAlignment="viewStart"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/email_id_textview"
         app:layout_constraintTop_toBottomOf="@+id/name_id_textView" />
 
     <TextView
         android:id="@+id/email_id_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="alfa.sunny.20@gmail.com"
-        android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/email_textView"
         app:layout_constraintTop_toBottomOf="@+id/phone_id_textView" />
 
     <Button
@@ -147,19 +119,17 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="87dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_button"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <include
             android:id="@+id/include6"
             layout="@layout/foot_bar"
             android:layout_width="match_parent"
             android:layout_height="69dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -167,22 +137,37 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.653" />
+            app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="196dp"
+    <!--<ImageView-->
+        <!--android:id="@+id/profilePic"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="252dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:srcCompat="@drawable/logo001" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profilePic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:srcCompat="@drawable/profile" />
 
 </android.support.constraint.ConstraintLayout>
 

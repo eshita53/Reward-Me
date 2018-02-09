@@ -5,24 +5,10 @@
     android:id="@+id/registerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/almostwhite"
+    android:background="@drawable/logo001"
+    android:backgroundTint="#64F7F7F7"
+    android:backgroundTintMode="src_over"
     tools:context="com.example.alfasunny.homeuser.completed.Register">
-
-    <ImageView
-        android:id="@+id/imageView28"
-        android:layout_width="153dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/g29"
-        app:layout_constraintEnd_toStartOf="@+id/g70"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/g30"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo001" />
 
     <android.support.constraint.Guideline
         android:id="@+id/g30"
@@ -43,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.27" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <ScrollView
         android:id="@+id/contentScrollView"
@@ -53,7 +39,7 @@
         android:layout_marginStart="8dp"
 
         android:layout_marginTop="16dp"
-        android:background="@android:color/white"
+        android:background="#c8f7f7f7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/g29">
@@ -220,6 +206,35 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/imageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="No Image Selected"
+                    android:textAlignment="viewStart"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/content"
+                    tools:layout_editor_absoluteY="521dp" />
+
+                <Button
+                    android:id="@+id/btnChooseImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Choose Image"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                    app:layout_constraintStart_toEndOf="@+id/textView14"
+                    app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:padding="10dp">
 
@@ -233,6 +248,7 @@
                     android:textSize="24sp" />
 
             </TableRow>
+
         </TableLayout>
     </ScrollView>
 

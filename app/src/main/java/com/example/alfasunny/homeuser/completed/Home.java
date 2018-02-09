@@ -1,5 +1,6 @@
 package com.example.alfasunny.homeuser.completed;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +47,6 @@ public class Home extends AppCompatActivity {
         btnManage = (Button) findViewById(R.id.btnManage);
 
 
-
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +79,9 @@ public class Home extends AppCompatActivity {
             }
         });
 
-
+        ProgressDialog dialog = new ProgressDialog(Home.this);
+        dialog.setTitle("Loading data...");
+        dialog.show();
 
         //Common task for many activities
         d = DataHelper.getInstance();
@@ -93,11 +95,12 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        d.getUsers().child(d.getUid()).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
+        d.getUsers().child(d.getUid()).child("accountType").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                dialog.cancel();
                 String accountType = dataSnapshot.getValue(String.class);
-                if(accountType.equals("owner") || ownership==true) {
+                if(accountType!=null && accountType.equals("owner")) {
                     ownership=true;
                     btnManage.setVisibility(View.VISIBLE);
                 }
@@ -184,6 +187,12 @@ public class Home extends AppCompatActivity {
                 if(!isMore) startActivity(moreIntent);
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ownership=false;
     }
 
     @Override

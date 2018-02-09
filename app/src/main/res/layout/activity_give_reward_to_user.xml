@@ -30,6 +30,7 @@
         android:gravity="center"
         android:inputType="textPersonName"
         android:text="Reward Points:"
+        android:textAlignment="viewStart"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/editText26"
         app:layout_constraintStart_toStartOf="@+id/editText26"
@@ -45,7 +46,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Reward Ratio:"
+        android:text="Reward Ratio (%):"
+        android:textAlignment="viewStart"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +63,7 @@
         android:gravity="center"
         android:inputType="textPersonName"
         android:text="Enter Price:"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/editText26"
@@ -73,10 +76,11 @@
         android:layout_height="42dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:inputType="number|numberSigned|numberDecimal"
         android:text="0"
         android:textAlignment="viewEnd"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/editText27"
         app:layout_constraintStart_toStartOf="@+id/inputRewardRatio"
         app:layout_constraintTop_toTopOf="@+id/editText27" />
@@ -87,10 +91,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:inputType="number|numberDecimal"
         android:text="0"
         android:textAlignment="textEnd"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText26"
         app:layout_constraintTop_toTopOf="@+id/editText26" />
 
@@ -101,10 +106,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="36dp"
+        android:inputType="number|numberDecimal"
         android:text="0"
         android:textAlignment="viewEnd"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/editText25"
         app:layout_constraintStart_toStartOf="@+id/inputRewardRatio"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
@@ -115,17 +121,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:text="%"
-        android:textAlignment="textEnd"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/inputRewardRatio"
-        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/btnAddReward"

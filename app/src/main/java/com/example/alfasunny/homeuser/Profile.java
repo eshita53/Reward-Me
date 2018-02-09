@@ -6,15 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
 import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
     DataHelper d;
     Button editButton;
+    TextView name;
+    TextView email;
+    TextView phone;
+    CircleImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +34,16 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         d = DataHelper.getInstance();
+        name = (TextView) findViewById(R.id.name_id_textView);
+        phone = (TextView) findViewById(R.id.phone_id_textView);
+        email = (TextView) findViewById(R.id.email_id_textview);
+        profilePic = (CircleImageView) findViewById(R.id.profilePic);
+
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()==null) {
+                if (firebaseAuth.getCurrentUser() == null) {
                     finish();
                 }
             }
@@ -63,11 +80,18 @@ public class Profile extends AppCompatActivity {
                 startActivity(moreIntent);
             }
         });
-        findViewById(R.id.edit_button).setOnClickListener((v)->{
-            Intent profileToEditProfile= new Intent(Profile.this,ProfileEditPage.class);
+        findViewById(R.id.edit_button).setOnClickListener((v) -> {
+            Intent profileToEditProfile = new Intent(Profile.this, ProfileEditPage.class);
             startActivity(profileToEditProfile);
 
 
         });
+
+        name.setText(d.getUserName());
+        phone.setText(d.getUserPhone());
+        email.setText(d.getUserEmail());
+        Glide.with(Profile.this).load(d.getUserProfilePictureAddress()).into(profilePic);
+
+
     }
 }

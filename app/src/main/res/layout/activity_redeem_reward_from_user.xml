@@ -21,55 +21,43 @@
 
     <TextView
         android:id="@+id/inputRedeemVal"
-        android:layout_width="176dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Reward Point Cost"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="24dp"
+        android:text="Redeemed Reward"
         android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView98"
         app:layout_constraintTop_toBottomOf="@+id/textView98" />
 
     <TextView
         android:id="@+id/textView98"
-        android:layout_width="176dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Given Discount:"
         android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView94" />
 
-    <TextView
-        android:id="@+id/textView94"
-        android:layout_width="223dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Maximum Discount:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView93"
         app:layout_constraintTop_toBottomOf="@+id/textView93" />
 
     <TextView
         android:id="@+id/textView93"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="Available Points:"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView35"
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="176dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Enter Price:"
         android:textSize="28sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -77,87 +65,73 @@
 
     <EditText
         android:id="@+id/inputValue"
-        android:layout_width="85dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="40"
         android:textAlignment="center"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/inputRedeemVal"
         app:layout_constraintLeft_toRightOf="@+id/inputRedeemVal"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView103" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/textView103"
-        android:layout_width="85dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:text="40"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView98"
+        app:layout_constraintEnd_toEndOf="@+id/inputValue"
         app:layout_constraintLeft_toRightOf="@+id/textView98"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView102" />
-
-    <TextView
-        android:id="@+id/textView102"
-        android:layout_width="85dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:text="60"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintLeft_toRightOf="@+id/textView94"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/availablePoints" />
+        app:layout_constraintStart_toStartOf="@+id/inputValue" />
 
     <TextView
         android:id="@+id/availablePoints"
-        android:layout_width="85dp"
-        android:layout_height="35dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView93"
+        app:layout_constraintEnd_toEndOf="@+id/inputValue"
         app:layout_constraintLeft_toRightOf="@+id/textView93"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView93" />
+        app:layout_constraintStart_toStartOf="@+id/inputValue" />
 
     <EditText
-        android:id="@+id/textView100"
-        android:layout_width="85dp"
+        android:id="@+id/inputPrice"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:text="205"
         android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView35"
+
+        app:layout_constraintEnd_toEndOf="@+id/inputValue"
         app:layout_constraintLeft_toRightOf="@+id/textView35"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView35" />
+        app:layout_constraintStart_toStartOf="@+id/inputValue" />
 
     <Button
         android:id="@+id/btnRedeemReward"
         android:layout_width="357dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="32dp"
         android:background="#dddddd"
         android:text="Redeem  Reward"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/include5"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputRedeemVal" />
 
     <include
         android:id="@+id/include5"

@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "613327507289-28dm5rfasvnr0mcvgk42hd18gd381jd9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfasunny.homeuser",
+            "certificate_hash": "35f6afdad240e8548766f2e8e924059562cb1c74"
+          }
+        },
+        {
+          "client_id": "613327507289-ge6o7c09jdv0e0iiavte6vljjk7fg9up.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfasunny.homeuser",
+            "certificate_hash": "30900f74e053b420bcb573eb2c09e873da9150f6"
+          }
+        },
+        {
           "client_id": "613327507289-8g8qm6hkgk3s8mjdklnsrm5aegriejvu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

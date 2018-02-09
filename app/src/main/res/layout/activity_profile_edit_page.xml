@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="24sp"

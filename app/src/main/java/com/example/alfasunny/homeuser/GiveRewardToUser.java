@@ -12,16 +12,20 @@ import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
 import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class GiveRewardToUser extends AppCompatActivity {
     Button btnAddReward;
-    EditText rewardPoint,inputRewardRatio;
+    EditText rewardPoint,inputRewardRatio, price;
     DataHelper d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_reward_to_user);
 
+        price = (EditText) findViewById(R.id.inputPrice);
         btnAddReward = (Button) findViewById(R.id.btnAddReward);
         rewardPoint = (EditText) findViewById(R.id.inputReward);
         inputRewardRatio=(EditText) findViewById(R.id.inputRewardRatio);
@@ -37,11 +41,25 @@ public class GiveRewardToUser extends AppCompatActivity {
             }
         });
 
+        d.getUsers().child(d.getUid()).child("restaurant").child("RewardRate").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                inputRewardRatio.setText(String.valueOf(dataSnapshot.getValue(Double.class)));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         btnAddReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                d.addReward(getIntent().getStringExtra("uid"), Integer.parseInt(rewardPoint.getText().toString()));
+                int reward = Integer.parseInt(rewardPoint.getText().toString());
+                double cost = Double.parseDouble(price.getText().toString());
+                d.addReward(getIntent().getStringExtra("uid"), reward, cost);
 
                 finish();
             }

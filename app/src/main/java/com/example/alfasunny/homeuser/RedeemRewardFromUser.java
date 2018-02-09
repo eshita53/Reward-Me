@@ -21,39 +21,45 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RedeemRewardFromUser extends AppCompatActivity {
     DataHelper d;
-    Button btnRedeemword;
+    Button btnRedeemReward;
     EditText inputRedeemVal;
+    EditText inputPrice;
     DatabaseReference summary;
-     TextView availablePoints;
-     FirebaseAuth mAuth;
-     String uid;
+    TextView availablePoints;
+    FirebaseAuth mAuth;
+    String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redeem_reward_from_user);
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getCurrentUser().getUid();
-        summary= FirebaseDatabase.getInstance().getReference("summary");
+        summary = FirebaseDatabase.getInstance().getReference("summary");
         d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()==null) {
+                if (firebaseAuth.getCurrentUser() == null) {
                     finish();
                 }
             }
         });
 
-        availablePoints=(TextView) findViewById(R.id.availablePoints);
+        availablePoints = (TextView) findViewById(R.id.availablePoints);
+        inputPrice = (EditText) findViewById(R.id.inputPrice);
 
-        btnRedeemword = (Button) findViewById(R.id.btnRedeemReward);
+        btnRedeemReward = (Button) findViewById(R.id.btnRedeemReward);
         inputRedeemVal = (EditText) findViewById(R.id.inputValue);
 
-        btnRedeemword.setOnClickListener(new View.OnClickListener() {
+        btnRedeemReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                d.redeemReward(getIntent().getStringExtra("uid"), Integer.parseInt(inputRedeemVal.getText().toString()));
+                String customerId = getIntent().getStringExtra("uid");
+                int redeemPoints = Integer.parseInt(inputRedeemVal.getText().toString());
+                Double cost = Double.parseDouble(inputPrice.getText().toString());
+                d.redeemReward(customerId, redeemPoints, cost);
                 finish();
             }
         });
@@ -92,9 +98,9 @@ public class RedeemRewardFromUser extends AppCompatActivity {
         summary.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-              //  totalEarning = dataSnapshot.child("totalEarning").getValue(Integer.class);
-              //  totalRedeem = dataSnapshot.child("totalRedeem").getValue(Integer.class);
-                availablePoints.setText(Integer.toString((int)dataSnapshot.
+                //  totalEarning = dataSnapshot.child("totalEarning").getValue(Integer.class);
+                //  totalRedeem = dataSnapshot.child("totalRedeem").getValue(Integer.class);
+                availablePoints.setText(Integer.toString(dataSnapshot.
                         child("totalPoints").getValue(Integer.class)));
 
 
@@ -106,8 +112,6 @@ public class RedeemRewardFromUser extends AppCompatActivity {
             }
         });
 //      int totalPoints= d.getTotalPoints();
-
-
 
 
     }
