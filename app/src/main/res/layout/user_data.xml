@@ -22,7 +22,7 @@
         >
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/profilePic"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@mipmap/profile_pic_default"

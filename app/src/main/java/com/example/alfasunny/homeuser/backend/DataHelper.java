@@ -1,6 +1,8 @@
 package com.example.alfasunny.homeuser.backend;
 
+import android.app.Activity;
 import android.net.Uri;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -12,6 +14,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +23,7 @@ import java.util.Map;
  */
 
 public class DataHelper {
+
     private static DataHelper instance = new DataHelper();
 
     FirebaseDatabase db;
@@ -34,32 +38,7 @@ public class DataHelper {
     String uid;
     private FirebaseStorage mFirebaseStorage;
     private StorageReference storage;
-
-    String userName, userEmail, userPhone, userProfilePictureAddress;
-
-    public static DataHelper getInstance() {
-        return instance;
-    }
-
-    public StorageReference getStorage() {
-        return storage;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public String getUserProfilePictureAddress() {
-        return userProfilePictureAddress;
-    }
+    String userName="", userEmail="", userPhone="", userProfilePictureAddress="";
 
     private DataHelper() {
         db = FirebaseDatabase.getInstance();
@@ -160,6 +139,30 @@ public class DataHelper {
 
     public void redeemReward(String customerId, int points, double cost) {
         addReward(customerId, (0 - points), cost);
+    }
+
+    public static DataHelper getInstance() {
+        return instance;
+    }
+
+    public StorageReference getStorage() {
+        return storage;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public String getUserProfilePictureAddress() {
+        return userProfilePictureAddress;
     }
 
     public FirebaseDatabase getDb() {

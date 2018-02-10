@@ -90,8 +90,25 @@ public class Profile extends AppCompatActivity {
         name.setText(d.getUserName());
         phone.setText(d.getUserPhone());
         email.setText(d.getUserEmail());
-        Glide.with(Profile.this).load(d.getUserProfilePictureAddress()).into(profilePic);
 
+        new Thread(() -> {
+            try {
+                String oldAddress = "";
+                while (true) {
+                    String newAddress = d.getUserProfilePictureAddress();
+                    if (newAddress != oldAddress) {
+                        runOnUiThread(()->{
+                            Glide.with(Profile.this).load(newAddress).into(profilePic);
+                        });
+                        oldAddress = newAddress;
+                    }
+                    Thread.sleep(500);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
     }
 }

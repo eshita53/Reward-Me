@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
@@ -18,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static java.lang.Thread.sleep;
 
@@ -35,16 +39,43 @@ public class Home extends AppCompatActivity {
     Button btnAdd;
     Button btnReviews;
     Button btnRedeem;
+    CircleImageView profilePic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //Common task for many activities
+        d = DataHelper.getInstance();
+
 
         //Tasks specific to this page
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnRedeem = (Button) findViewById(R.id.btnRedeem);
         btnReviews = (Button) findViewById(R.id.btnReviews);
         btnManage = (Button) findViewById(R.id.btnManage);
+        profilePic = (CircleImageView) findViewById(R.id.profilePic);
+
+
+        new Thread(() -> {
+            try {
+                String oldAddress = "";
+                while (true) {
+                    String newAddress = d.getUserProfilePictureAddress();
+                    if (newAddress != oldAddress) {
+                        runOnUiThread(()->{
+                            Glide.with(Home.this).load(newAddress).into(profilePic);
+                        });
+                        oldAddress = newAddress;
+                    }
+                    Thread.sleep(500);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -83,13 +114,11 @@ public class Home extends AppCompatActivity {
         dialog.setTitle("Loading data...");
         dialog.show();
 
-        //Common task for many activities
-        d = DataHelper.getInstance();
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()==null) {
+                if (firebaseAuth.getCurrentUser() == null) {
                     finish();
                 }
             }
@@ -100,8 +129,8 @@ public class Home extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dialog.cancel();
                 String accountType = dataSnapshot.getValue(String.class);
-                if(accountType!=null && accountType.equals("owner")) {
-                    ownership=true;
+                if (accountType != null && accountType.equals("owner")) {
+                    ownership = true;
                     btnManage.setVisibility(View.VISIBLE);
                 }
 
@@ -123,6 +152,7 @@ public class Home extends AppCompatActivity {
             TextView earnedTxt;
             TextView redeemTxt;
             TextView totalPointsTxt;
+
             @Override
             public void run() {
                 while (true) {
@@ -160,7 +190,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent homeIntent = new Intent(getBaseContext(), Home.class);
-                if(!isHome) startActivity(homeIntent);
+                if (!isHome) startActivity(homeIntent);
             }
         });
 
@@ -168,7 +198,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent notificationIntent = new Intent(getBaseContext(), Notifications.class);
-                if(!isNotification) startActivity(notificationIntent);
+                if (!isNotification) startActivity(notificationIntent);
             }
         });
 
@@ -176,7 +206,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent profileIntent = new Intent(getBaseContext(), Profile.class);
-                if(!isProfile) startActivity(profileIntent);
+                if (!isProfile) startActivity(profileIntent);
             }
         });
 
@@ -184,7 +214,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent moreIntent = new Intent(getBaseContext(), More.class);
-                if(!isMore) startActivity(moreIntent);
+                if (!isMore) startActivity(moreIntent);
             }
         });
     }
@@ -192,13 +222,13 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        ownership=false;
+        ownership = false;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(ownership==true) {
+        if (ownership == true) {
             btnManage.setVisibility(View.VISIBLE);
         }
         TextView totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
