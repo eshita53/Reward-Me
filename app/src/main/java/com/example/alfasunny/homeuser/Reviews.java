@@ -4,21 +4,54 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
 import com.example.alfasunny.homeuser.completed.Notifications;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Reviews extends AppCompatActivity {
     DataHelper d;
+    RecyclerView reviewList;
+    ArrayList<ReviewEach> reviewEachArrayList = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews);
 
+        reviewList = (RecyclerView) findViewById(R.id.reviewList);
+
+
+
         d = DataHelper.getInstance();
+
+        d.getReviews().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                reviewEachArrayList = new ArrayList<>();
+                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                    ReviewEach current = child.getValue(ReviewEach.class);
+                    reviewEachArrayList.add(current);
+                }
+                Collections.reverse(reviewEachArrayList);
+
+                reviewList.setAdapter(new reviewAdapter(reviewEachArrayList, Reviews.this));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {

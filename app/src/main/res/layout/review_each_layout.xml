@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/authorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Romana Mahjabin Eshita"
+        app:layout_constraintStart_toEndOf="@+id/authorLabel"
+        app:layout_constraintTop_toTopOf="@+id/authorLabel" />
+
+    <TextView
+        android:id="@+id/ratingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Good"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ratingLabel"
+        app:layout_constraintTop_toTopOf="@+id/ratingLabel" />
+
+    <TextView
+        android:id="@+id/itemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Item:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/restaurantLabel"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantLabel" />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Doi Fuchka"
+        android:textColor="@color/darkRed"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/itemLabel"
+        app:layout_constraintTop_toTopOf="@+id/itemLabel" />
+
+    <TextView
+        android:id="@+id/restaurantLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Restaurant:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/restaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Alfe's Heaven"
+        android:textColor="@color/darkblue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/restaurantLabel"
+        app:layout_constraintTop_toTopOf="@+id/restaurantLabel" />
+
+    <TextView
+        android:id="@+id/ratingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Rating:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/itemLabel"
+        app:layout_constraintTop_toBottomOf="@+id/itemLabel" />
+
+    <TextView
+        android:id="@+id/authorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Author:"
+        app:layout_constraintStart_toStartOf="@+id/ratingLabel"
+        app:layout_constraintTop_toBottomOf="@+id/ratingLabel" />
+
+    <TextView
+        android:id="@+id/reviewDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/reviewDescription"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/authorLabel"
+        app:layout_constraintTop_toBottomOf="@+id/authorName" />
+
+    <Button
+        android:id="@+id/readMore"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Read More"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/authorLabel"
+        app:layout_constraintTop_toBottomOf="@+id/reviewDescription" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/readMore" />
+</android.support.constraint.ConstraintLayout>

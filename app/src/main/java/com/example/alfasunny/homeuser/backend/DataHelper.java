@@ -31,6 +31,7 @@ public class DataHelper {
     DatabaseReference users;
     DatabaseReference transactions;
     DatabaseReference summary;
+    DatabaseReference reviews;
     Integer totalEarning = 0;
     Integer totalRedeem = 0;
     Integer totalPoints = 0;
@@ -41,6 +42,14 @@ public class DataHelper {
     ValueEventListener earningListener, accountListener, transactionListener;
     DatabaseReference myAccount, myEarning, myTransaction;
 
+    public DatabaseReference getReviews() {
+        return reviews;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     private DataHelper() {
         db = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -50,6 +59,7 @@ public class DataHelper {
         users = dbref.child("users");
         transactions = dbref.child("transactions");
         summary = dbref.child("summary");
+        reviews = dbref.child("reviews");
 
 
         earningListener = new ValueEventListener() {

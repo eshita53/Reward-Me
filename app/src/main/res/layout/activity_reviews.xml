@@ -6,161 +6,72 @@
     android:layout_height="match_parent"
     tools:context="com.example.alfasunny.homeuser.Reviews">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="89dp"
-        android:layout_height="82dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="284dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="16dp"
-        android:text="   Reviews"
-        android:textSize="45sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText7"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="136dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=" Restaurant:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=" Item:"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="103dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Rating:"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="237dp"
-        android:layout_height="39dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="31dp"
-        android:text="Demo's Cave"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toRightOf="@+id/editText7"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="302dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Chocolate Shake"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintLeft_toRightOf="@+id/editText8"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="271dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="21dp"
-        android:text="Read More"
-        android:textSize="18sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="84dp"
-        android:layout_height="61dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        <include
+            android:id="@+id/userData"
+            layout="@layout/user_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="306dp"
-        android:layout_height="57dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="     Add  Review"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintLeft_toRightOf="@+id/imageButton10"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_launcher_background"
+            android:text="Add Review"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/userData"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <include
+        android:id="@+id/include10"
         layout="@layout/foot_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/reviewListFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/include10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reviewList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Header" />
+    </FrameLayout>
 
 
 </android.support.constraint.ConstraintLayout>

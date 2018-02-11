@@ -2,13 +2,20 @@ package com.example.alfasunny.homeuser.completed;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.example.alfasunny.homeuser.GlideApp;
 import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
@@ -22,6 +29,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static java.lang.Thread.sleep;
 
 public class RedeemReward extends AppCompatActivity {
@@ -29,12 +38,21 @@ public class RedeemReward extends AppCompatActivity {
     TextView uidText;
     ImageView qrImage;
     int counter=0;
+    volatile boolean stop = false;
+    CircleImageView profilePic;
+    Drawable loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redeem_reward);
 
+        profilePic = (CircleImageView) findViewById(R.id.profilePic);
+        loading = profilePic.getDrawable();
+
         d = DataHelper.getInstance();
+
+        stop=false;
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -145,5 +163,58 @@ public class RedeemReward extends AppCompatActivity {
                 startActivity(moreIntent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stop=false;
+
+        new Thread(new Runnable() {
+            String oldAddress = "";
+            String newAddress = "";
+            @Override
+            public void run() {
+                try {
+
+                    while (true) {
+                        if(stop) return;
+
+                        newAddress = d.getUserProfilePictureAddress();
+                        if (!stop && newAddress != null && newAddress != oldAddress) {
+                            runOnUiThread(() -> {
+                                GlideApp.with(RedeemReward.this).load(newAddress).placeholder(loading).listener(new RequestListener<Drawable>() {
+                                    @Override
+                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                        newAddress = "";
+                                        return true;
+                                    }
+
+                                    @Override
+                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                        return false;
+                                    }
+                                }).into(profilePic);
+
+
+
+                            });
+                            oldAddress = newAddress;
+                        }
+                        Thread.sleep(500);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stop=true;
     }
 }

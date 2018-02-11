@@ -6,4 +6,6 @@
     <color name="almostwhite">#64f7f7f7</color>
     <color name="transparent">#afffffff</color>
     <color name="whiteTransparent">#c8ffffff</color>
+    <color name="darkblue">#080b2b</color>
+    <color name="darkRed">#430000</color>
 </resources>
