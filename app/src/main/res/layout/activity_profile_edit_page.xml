@@ -15,7 +15,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
-        android:background=""></LinearLayout>
+        ></LinearLayout>
 
 
     <ImageButton

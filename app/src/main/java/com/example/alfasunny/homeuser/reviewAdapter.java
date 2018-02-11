@@ -47,11 +47,11 @@ class reviewAdapter extends RecyclerView.Adapter<reviewHolder> {
     @Override
     public reviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = this.parent.getLayoutInflater();
-        View view = inflater.inflate(R.layout.review_each_layout, parent);
+        View view = inflater.inflate(R.layout.review_each_layout, null);
 
         //needed for match_parent
-//        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        view.setLayoutParams(lp);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
 
         return new reviewHolder(view);
     }

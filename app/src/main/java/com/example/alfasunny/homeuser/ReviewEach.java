@@ -10,6 +10,14 @@ class ReviewEach {
     public ReviewEach() {
     }
 
+    public ReviewEach(String restaurantName, String itemName, String rating, String authorName, String reviewDescription) {
+        this.restaurantName = restaurantName;
+        this.itemName = itemName;
+        this.rating = rating;
+        this.authorName = authorName;
+        this.reviewDescription = reviewDescription;
+    }
+
     public String getRestaurantName() {
         return restaurantName;
     }

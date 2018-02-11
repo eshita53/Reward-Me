@@ -36,7 +36,8 @@
         <activity android:name=".completed.Register" />
         <activity android:name=".completed.Login" />
         <activity android:name=".ProfileEditPage" />
-        <activity android:name=".completed.AddRestaurant"></activity>
+        <activity android:name=".completed.AddRestaurant" />
+        <activity android:name=".AddReview"></activity>
     </application>
 
 </manifest>

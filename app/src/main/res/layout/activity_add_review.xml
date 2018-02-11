@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alfasunny.homeuser.AddReview">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/ratingData"
+            android:layout_width="200dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingLabel"
+            app:layout_constraintStart_toStartOf="@+id/itemName"
+            app:layout_constraintTop_toTopOf="@+id/ratingLabel"
+            app:layout_constraintVertical_bias="0.48" />
+
+        <TextView
+            android:id="@+id/itemLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Item:"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/restaurantLabel"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantLabel" />
+
+        <EditText
+            android:id="@+id/itemName"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text=""
+            android:textColor="@color/darkRed"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/itemLabel"
+            app:layout_constraintStart_toStartOf="@+id/restaurantName"
+            app:layout_constraintTop_toTopOf="@+id/itemLabel"
+            app:layout_constraintVertical_bias="0.266" />
+
+        <TextView
+            android:id="@+id/restaurantLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Restaurant:"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/restaurantName"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:text=""
+            android:textColor="@color/darkblue"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantLabel"
+            app:layout_constraintStart_toEndOf="@+id/restaurantLabel"
+            app:layout_constraintTop_toTopOf="@+id/restaurantLabel" />
+
+        <TextView
+            android:id="@+id/ratingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Rating:"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/itemLabel"
+            app:layout_constraintTop_toBottomOf="@+id/itemLabel" />
+
+        <EditText
+            android:id="@+id/reviewDescription"
+
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:hint="Enter your review here"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingData" />
+
+        <Button
+            android:id="@+id/submitReview"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Submit Review"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reviewDescription" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
