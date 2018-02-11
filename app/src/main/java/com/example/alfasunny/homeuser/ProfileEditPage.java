@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
@@ -17,6 +18,8 @@ public class ProfileEditPage extends AppCompatActivity {
   private ImageButton  profileImage;
     DataHelper d;
     Button doneButton;
+    EditText userName;
+    EditText userPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,6 +27,8 @@ public class ProfileEditPage extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit_page);
 
         d = DataHelper.getInstance();
+        userName=(EditText) findViewById(R.id.userName);
+        userPhone=(EditText) findViewById(R.id.userPhone);
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -72,7 +77,10 @@ public class ProfileEditPage extends AppCompatActivity {
         });
 
 
-        profileImage=(ImageButton) findViewById(R.id.profileImage);
+        userName.setText(d.getUserName());
+        userPhone.setText(d.getUserPhone());
+
+
 
 
     }

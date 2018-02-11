@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.alfasunny.homeuser.backend.DataHelper;
@@ -96,8 +97,9 @@ public class Profile extends AppCompatActivity {
                 String oldAddress = "";
                 while (true) {
                     String newAddress = d.getUserProfilePictureAddress();
-                    if (newAddress != oldAddress) {
+                    if (newAddress != null && newAddress != oldAddress) {
                         runOnUiThread(()->{
+                            //Toast.makeText(Profile.this, newAddress, Toast.LENGTH_LONG).show();
                             Glide.with(Profile.this).load(newAddress).into(profilePic);
                         });
                         oldAddress = newAddress;

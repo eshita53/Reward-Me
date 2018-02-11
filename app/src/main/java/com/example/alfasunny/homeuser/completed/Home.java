@@ -63,7 +63,7 @@ public class Home extends AppCompatActivity {
                 String oldAddress = "";
                 while (true) {
                     String newAddress = d.getUserProfilePictureAddress();
-                    if (newAddress != oldAddress) {
+                    if (newAddress!= null && newAddress != oldAddress) {
                         runOnUiThread(()->{
                             Glide.with(Home.this).load(newAddress).into(profilePic);
                         });
