@@ -1,5 +1,6 @@
 package com.example.alfasunny.homeuser;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
@@ -28,6 +30,9 @@ public class RedeemRewardFromUser extends AppCompatActivity {
     TextView availablePoints;
     FirebaseAuth mAuth;
     String uid;
+    ProgressDialog dialog;
+    Integer available;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +52,44 @@ public class RedeemRewardFromUser extends AppCompatActivity {
             }
         });
 
+
         availablePoints = (TextView) findViewById(R.id.availablePoints);
         inputPrice = (EditText) findViewById(R.id.inputPrice);
 
         btnRedeemReward = (Button) findViewById(R.id.btnRedeemReward);
         inputRedeemVal = (EditText) findViewById(R.id.inputValue);
 
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading data");
+        dialog.show();
+
+        String customerID = getIntent().getStringExtra("uid");
+        d.getSummary().child(customerID).child("totalPoints").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dialog.cancel();
+                available = dataSnapshot.getValue(Integer.class);
+                availablePoints.setText(String.valueOf(available));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         btnRedeemReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String customerId = getIntent().getStringExtra("uid");
                 int redeemPoints = Integer.parseInt(inputRedeemVal.getText().toString());
+
+                if (redeemPoints > available) {
+                    Toast.makeText(RedeemRewardFromUser.this, "enter a lower value of redeemed reward", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Double cost = Double.parseDouble(inputPrice.getText().toString());
                 d.redeemReward(customerId, redeemPoints, cost);
                 finish();

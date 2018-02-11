@@ -3,6 +3,7 @@ package com.example.alfasunny.homeuser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -14,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class More extends AppCompatActivity {
     DataHelper d;
+    ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,24 +32,22 @@ public class More extends AppCompatActivity {
                 }
             }
         });
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        findViewById(R.id.aboutUs).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent aboutUsIntent = new Intent(getBaseContext(), AboutUs.class);
-                startActivity(aboutUsIntent);
-            }
-        });
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
 
-        findViewById(R.id.referToFriends).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent referIntent = new Intent(getBaseContext(), ReferToFriends.class);
-                startActivity(referIntent);
-            }
-        });
+        viewPager.setAdapter(viewPagerAdapter);
 
         findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.getmAuth().signOut();
+                startActivity(new Intent(More.this, MainActivity.class));
+                finish();
+            }
+        });
+
+        findViewById(R.id.logoutSection).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 d.getmAuth().signOut();

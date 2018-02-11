@@ -38,6 +38,7 @@
         android:text="Given Discount:"
         android:textSize="24sp"
 
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/textView93"
         app:layout_constraintTop_toBottomOf="@+id/textView93" />
 
@@ -85,6 +86,7 @@
         android:text="40"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:visibility="gone"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView98"
         app:layout_constraintEnd_toEndOf="@+id/inputValue"
         app:layout_constraintLeft_toRightOf="@+id/textView98"
