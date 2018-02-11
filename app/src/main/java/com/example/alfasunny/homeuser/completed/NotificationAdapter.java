@@ -60,6 +60,7 @@ class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
         String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String fromUid = currentNotification.getFrom();
 
+
         if(fromUid.equals(myUid)) {
             holder.label.setText("Customer:");
             holder.Name.setText(currentNotification.getToPersonName());
