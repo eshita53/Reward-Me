@@ -2,6 +2,7 @@ package com.example.alfasunny.homeuser.backend;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -111,6 +112,7 @@ public class DataHelper {
 
     public void addReward(String customerId, int points, double cost) {
         DatabaseReference customerTransaction = transactions.child(customerId);
+        DatabaseReference myTransaction = transactions.child(uid);
         String key = customerTransaction.push().getKey();
         Map<String, Object> transactionData = new HashMap<>();
         users.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -122,7 +124,9 @@ public class DataHelper {
                 transactionData.put("/" + key + "/" + "cost", cost);
                 transactionData.put("/" + key + "/" + "from", uid);
                 transactionData.put("/" + key + "/" + "amount", points);
+                transactionData.put("/" + key + "/" + "key", key);
                 customerTransaction.updateChildren(transactionData);
+                myTransaction.updateChildren(transactionData);
             }
 
             @Override

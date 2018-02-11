@@ -100,8 +100,7 @@ public class RedeemRewardFromUser extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //  totalEarning = dataSnapshot.child("totalEarning").getValue(Integer.class);
                 //  totalRedeem = dataSnapshot.child("totalRedeem").getValue(Integer.class);
-                availablePoints.setText(Integer.toString(dataSnapshot.
-                        child("totalPoints").getValue(Integer.class)));
+                availablePoints.setText(Integer.toString(dataSnapshot.child("totalPoints").getValue(Integer.class)));
 
 
             }

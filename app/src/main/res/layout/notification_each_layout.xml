@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:id="@+id/labelRestaurant"
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,15 +20,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/restaurantName"
+        android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Moyna Tea Longue"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelRestaurant"
-        app:layout_constraintStart_toEndOf="@+id/labelRestaurant" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/label"
+        app:layout_constraintStart_toEndOf="@+id/label" />
 
     <TextView
         android:id="@+id/notificationDescription"
@@ -40,6 +40,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/labelRestaurant"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+        app:layout_constraintStart_toStartOf="@+id/label"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 </android.support.constraint.ConstraintLayout>

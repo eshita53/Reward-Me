@@ -19,7 +19,7 @@ public class AddRestaurant extends AppCompatActivity {
         setContentView(R.layout.activity_add_restaurant);
 
         tinNumber = (EditText) findViewById(R.id.tinNumber);
-        restaurantName = (EditText) findViewById(R.id.restaurantName);
+        restaurantName = (EditText) findViewById(R.id.Name);
         restaurantLocation = (EditText) findViewById(R.id.restaurantLocation);
         restaurantPhone = (EditText) findViewById(R.id.restaurantPhone);
         restaurantRewardRatio = (EditText) findViewById(R.id.restaurantRewardRate);

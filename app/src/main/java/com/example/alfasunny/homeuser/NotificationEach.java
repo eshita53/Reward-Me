@@ -7,8 +7,27 @@ public class NotificationEach {
     String to;
     String fromRestaurantName;
     String toPersonName;
+    String key;
 
     public NotificationEach() {}
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public NotificationEach(String from, Integer amount, Double cost, String to, String fromRestaurantName, String toPersonName, String key) {
+        this.from = from;
+        this.amount = amount;
+        this.cost = cost;
+        this.to = to;
+        this.fromRestaurantName = fromRestaurantName;
+        this.toPersonName = toPersonName;
+        this.key = key;
+    }
 
     public NotificationEach(String from, Integer amount, Double cost, String to, String fromRestaurantName, String toPersonName) {
         this.from = from;
