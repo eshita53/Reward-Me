@@ -2,7 +2,9 @@ package com.example.alfasunny.homeuser.completed;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
@@ -27,7 +33,7 @@ import static java.lang.Thread.sleep;
 
 public class Home extends AppCompatActivity {
     DataHelper d;
-
+    volatile boolean stop = false;
     boolean isHome = true;
     boolean isNotification = false;
     boolean isProfile = false;
@@ -46,6 +52,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        stop=false;
+
         //Common task for many activities
         d = DataHelper.getInstance();
 
@@ -56,26 +64,6 @@ public class Home extends AppCompatActivity {
         btnReviews = (Button) findViewById(R.id.btnReviews);
         btnManage = (Button) findViewById(R.id.btnManage);
         profilePic = (CircleImageView) findViewById(R.id.profilePic);
-
-
-        new Thread(() -> {
-            try {
-                String oldAddress = "";
-                while (true) {
-                    String newAddress = d.getUserProfilePictureAddress();
-                    if (newAddress!= null && newAddress != oldAddress) {
-                        runOnUiThread(()->{
-                            Glide.with(Home.this).load(newAddress).into(profilePic);
-                        });
-                        oldAddress = newAddress;
-                    }
-                    Thread.sleep(500);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -120,27 +108,29 @@ public class Home extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
                     finish();
+                } else {
+                    d.getUsers().child(d.getUid()).child("accountType").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            dialog.cancel();
+                            String accountType = dataSnapshot.getValue(String.class);
+                            if (accountType != null && accountType.equals("owner")) {
+                                ownership = true;
+                                btnManage.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
         });
 
-        d.getUsers().child(d.getUid()).child("accountType").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                dialog.cancel();
-                String accountType = dataSnapshot.getValue(String.class);
-                if (accountType != null && accountType.equals("owner")) {
-                    ownership = true;
-                    btnManage.setVisibility(View.VISIBLE);
-                }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         TextView name = (TextView) findViewById(R.id.displayName);
         name.setText(d.getName());
@@ -223,15 +213,54 @@ public class Home extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         ownership = false;
+        stop=true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        stop=false;
         if (ownership == true) {
             btnManage.setVisibility(View.VISIBLE);
         }
         TextView totalPointsTxt = (TextView) findViewById(R.id.totalPoints);
         totalPointsTxt.setText(String.valueOf(tpoints));
+
+        new Thread(new Runnable() {
+            String oldAddress = "";
+            String newAddress = "";
+            @Override
+            public void run() {
+                try {
+
+                    while (true) {
+                        if(stop) return;
+
+                        newAddress = d.getUserProfilePictureAddress();
+                        if (!stop && newAddress != null && newAddress != oldAddress) {
+                            Home.this.runOnUiThread(() -> {
+                                Glide.with(Home.this).load(newAddress).listener(new RequestListener<Drawable>() {
+                                    @Override
+                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                        newAddress = "";
+                                        return true;
+                                    }
+
+                                    @Override
+                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                        return false;
+                                    }
+                                }).into(profilePic);
+                            });
+                            oldAddress = newAddress;
+                        }
+                        Thread.sleep(500);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

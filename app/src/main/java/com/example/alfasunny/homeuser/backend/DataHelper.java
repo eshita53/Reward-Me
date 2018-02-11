@@ -1,9 +1,7 @@
 package com.example.alfasunny.homeuser.backend;
 
-import android.app.Activity;
 import android.net.Uri;
-import android.provider.ContactsContract;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +13,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -41,6 +38,8 @@ public class DataHelper {
     private FirebaseStorage mFirebaseStorage;
     private StorageReference storage;
     String userName="", userEmail="", userPhone="", userProfilePictureAddress="";
+    ValueEventListener earningListener, accountListener, transactionListener;
+    DatabaseReference myAccount, myEarning, myTransaction;
 
     private DataHelper() {
         db = FirebaseDatabase.getInstance();
@@ -52,9 +51,8 @@ public class DataHelper {
         transactions = dbref.child("transactions");
         summary = dbref.child("summary");
 
-        uid = mAuth.getCurrentUser().getUid();
 
-        summary.child(uid).addValueEventListener(new ValueEventListener() {
+        earningListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 totalEarning = dataSnapshot.child("totalEarning").getValue(Integer.class);
@@ -66,9 +64,8 @@ public class DataHelper {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
-
-        users.child(getUid()).addValueEventListener(new ValueEventListener() {
+        };
+        accountListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userName = dataSnapshot.child("name").getValue(String.class);
@@ -81,11 +78,8 @@ public class DataHelper {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
-
-
-
-        transactions.child(uid).addValueEventListener(new ValueEventListener() {
+        };
+        transactionListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Integer sum=0, earned=0, redeemed=0;
@@ -112,7 +106,33 @@ public class DataHelper {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+        };
+
+
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser()!=null) {
+                    uid = mAuth.getCurrentUser().getUid();
+
+                    myEarning = summary.child(uid);
+                    myEarning.addValueEventListener(earningListener);
+
+                    myAccount = users.child(getUid());
+                    myAccount.addValueEventListener(accountListener);
+
+                    myTransaction = transactions.child(uid);
+                    myTransaction.addValueEventListener(transactionListener);
+
+                } else if(uid!=null){
+                    summary.child(uid).removeEventListener(earningListener);
+                    users.child(uid).removeEventListener(accountListener);
+                    transactions.child(uid).removeEventListener(transactionListener);
+                }
+            }
         });
+
+
     }
 
     public void addReward(String customerId, int points, double cost) {

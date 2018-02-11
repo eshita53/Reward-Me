@@ -1,7 +1,9 @@
 package com.example.alfasunny.homeuser;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.example.alfasunny.homeuser.completed.Home;
 import com.example.alfasunny.homeuser.completed.Notifications;
@@ -28,10 +34,12 @@ public class Profile extends AppCompatActivity {
     TextView email;
     TextView phone;
     CircleImageView profilePic;
+    volatile boolean stop = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        stop=false;
         setContentView(R.layout.activity_profile);
 
         d = DataHelper.getInstance();
@@ -91,26 +99,54 @@ public class Profile extends AppCompatActivity {
         name.setText(d.getUserName());
         phone.setText(d.getUserPhone());
         email.setText(d.getUserEmail());
+    }
 
-        new Thread(() -> {
-            try {
-                String oldAddress = "";
-                while (true) {
-                    String newAddress = d.getUserProfilePictureAddress();
-                    if (newAddress != null && newAddress != oldAddress) {
-                        runOnUiThread(()->{
-                            //Toast.makeText(Profile.this, newAddress, Toast.LENGTH_LONG).show();
-                            Glide.with(Profile.this).load(newAddress).into(profilePic);
-                        });
-                        oldAddress = newAddress;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stop=false;
+
+        new Thread(new Runnable() {
+            String oldAddress = "";
+            String newAddress = "";
+            @Override
+            public void run() {
+                try {
+
+                    while (true) {
+                        if(stop) return;
+
+                        newAddress = d.getUserProfilePictureAddress();
+                        if (!stop && newAddress != null && newAddress != oldAddress) {
+                            runOnUiThread(() -> {
+                                Glide.with(Profile.this).load(newAddress).listener(new RequestListener<Drawable>() {
+                                    @Override
+                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                        newAddress = "";
+                                        return true;
+                                    }
+
+                                    @Override
+                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                        return false;
+                                    }
+                                }).into(profilePic);
+                            });
+                            oldAddress = newAddress;
+                        }
+                        Thread.sleep(500);
                     }
-                    Thread.sleep(500);
-                }
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stop=true;
     }
 }
