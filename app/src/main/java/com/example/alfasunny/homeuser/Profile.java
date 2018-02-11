@@ -27,6 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+
+
 public class Profile extends AppCompatActivity {
     DataHelper d;
     Button editButton;
@@ -121,7 +125,7 @@ public class Profile extends AppCompatActivity {
                         newAddress = d.getUserProfilePictureAddress();
                         if (!stop && newAddress != null && newAddress != oldAddress) {
                             runOnUiThread(() -> {
-                                Glide.with(Profile.this).load(newAddress).listener(new RequestListener<Drawable>() {
+                                GlideApp.with(Profile.this).load(newAddress).placeholder(loading).listener(new RequestListener<Drawable>() {
                                     @Override
                                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                         newAddress = "";
@@ -133,6 +137,9 @@ public class Profile extends AppCompatActivity {
                                         return false;
                                     }
                                 }).into(profilePic);
+
+
+
                             });
                             oldAddress = newAddress;
                         }

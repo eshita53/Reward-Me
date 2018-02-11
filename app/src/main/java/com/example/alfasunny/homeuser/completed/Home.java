@@ -17,6 +17,7 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.alfasunny.homeuser.GlideApp;
 import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
@@ -40,6 +41,7 @@ public class Home extends AppCompatActivity {
     boolean isMore = false;
     static boolean ownership = false;
     static int tpoints = 0;
+    Drawable loading;
 
     Button btnManage;
     Button btnAdd;
@@ -64,6 +66,7 @@ public class Home extends AppCompatActivity {
         btnReviews = (Button) findViewById(R.id.btnReviews);
         btnManage = (Button) findViewById(R.id.btnManage);
         profilePic = (CircleImageView) findViewById(R.id.profilePic);
+        loading = profilePic.getDrawable();
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -239,7 +242,7 @@ public class Home extends AppCompatActivity {
                         newAddress = d.getUserProfilePictureAddress();
                         if (!stop && newAddress != null && newAddress != oldAddress) {
                             Home.this.runOnUiThread(() -> {
-                                Glide.with(Home.this).load(newAddress).listener(new RequestListener<Drawable>() {
+                                GlideApp.with(Home.this).load(newAddress).placeholder(loading).listener(new RequestListener<Drawable>() {
                                     @Override
                                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                         newAddress = "";
