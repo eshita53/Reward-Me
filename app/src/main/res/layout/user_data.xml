@@ -24,7 +24,7 @@
             android:id="@+id/profilePic"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@mipmap/profile_pic_default"
+            android:src="@drawable/loading001"
             app:civ_border_color="#FF000000"
             app:civ_border_width="0dp"
             app:layout_constraintStart_toStartOf="parent"

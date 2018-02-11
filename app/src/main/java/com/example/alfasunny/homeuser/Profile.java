@@ -35,6 +35,7 @@ public class Profile extends AppCompatActivity {
     TextView phone;
     CircleImageView profilePic;
     volatile boolean stop = false;
+    Drawable loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class Profile extends AppCompatActivity {
         phone = (TextView) findViewById(R.id.phone_id_textView);
         email = (TextView) findViewById(R.id.email_id_textview);
         profilePic = (CircleImageView) findViewById(R.id.profilePic);
+        loading = profilePic.getDrawable();
 
 
         d.getmAuth().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
