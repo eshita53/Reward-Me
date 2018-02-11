@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.alfasunny.homeuser.More;
 import com.example.alfasunny.homeuser.Profile;
 import com.example.alfasunny.homeuser.R;
 import com.example.alfasunny.homeuser.Reviews;
+import com.example.alfasunny.homeuser.ViewPagerAdapter;
 import com.example.alfasunny.homeuser.backend.DataHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +50,7 @@ public class Home extends AppCompatActivity {
     Button btnReviews;
     Button btnRedeem;
     CircleImageView profilePic;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,11 @@ public class Home extends AppCompatActivity {
 
         //Common task for many activities
         d = DataHelper.getInstance();
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+
+        viewPager.setAdapter(viewPagerAdapter);
 
         //Tasks specific to this page
         btnAdd = (Button) findViewById(R.id.btnAdd);
