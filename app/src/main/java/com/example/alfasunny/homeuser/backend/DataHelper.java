@@ -18,6 +18,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Tanmoy Krishna Das on 30-Nov-17.
@@ -90,10 +91,14 @@ public class DataHelper {
                 Integer sum=0, earned=0, redeemed=0;
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Integer val = snapshot.child("amount").getValue(Integer.class);
+                    String from = snapshot.child("from").getValue(String.class);
 
-                    sum+=val;
-                    if(val>0) earned+=val;
-                    else redeemed-=val;
+
+                    if(!Objects.equals(from, uid)) {
+                        sum+=val;
+                        if(val>0) earned+=val;
+                        else redeemed-=val;
+                    }
                 }
 
                 Map<String, Object> mp = new HashMap<>();
