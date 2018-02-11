@@ -14,7 +14,8 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></LinearLayout>
+        tools:layout_editor_absoluteY="0dp"
+        android:background=""></LinearLayout>
 
 
     <ImageButton
@@ -52,9 +53,9 @@
         <EditText
             android:id="@+id/userName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="32dp"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,9 +80,9 @@
         <EditText
             android:id="@+id/userPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="32dp"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -107,9 +108,9 @@
         <EditText
             android:id="@+id/oldPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="32dp"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,9 +135,9 @@
         <EditText
             android:id="@+id/Newpassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="32dp"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 
